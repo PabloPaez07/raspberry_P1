@@ -2,7 +2,7 @@ const express = require('express');
 const Gpio = require('onoff').Gpio;
 
 const LED = new Gpio(1,'out');
-
+LED.write(0);
 const app = express();
 
 app.use(express.static('public'));
