@@ -9,6 +9,7 @@ const app = express();
 
 app.use(express.static('public'));
 app.get('/', (req, res) => {
+    Gpio.output(18,0);
     res.sendFile('./vistas/pagina_principal.html', {
         root:__dirname
     })
