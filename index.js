@@ -8,6 +8,7 @@ const app = express();
 app.use(express.static('public'));
 app.get('/', (req, res) => {
     LED.write(0);
+    console.log('apago_led');
     res.sendFile('./vistas/pagina_principal.html', {
         root:__dirname
     })
@@ -21,6 +22,7 @@ app.get('/informacion', (req, res) => {
 
 app.get('/aplicacion', (req, res) => {
     LED.write(1);
+    console.log('enciendo_led');
     res.sendFile('./vistas/aplicacion.html', {
         root:__dirname
     });
@@ -28,6 +30,7 @@ app.get('/aplicacion', (req, res) => {
 
 app.get('/contacto', (req, res) => {
     LED.write(0);
+    console.log('apago_led');
     res.sendFile('./vistas/contacto.html', {
         root:__dirname
     })
