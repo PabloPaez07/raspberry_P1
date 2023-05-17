@@ -7,13 +7,13 @@ const app = express();
 
 app.use(express.static('public'));
 app.get('/', (req, res) => {
+    LED.writeSync(0);
     res.sendFile('./vistas/pagina_principal.html', {
         root:__dirname
     })
 })
 
 app.get('/informacion', (req, res) => {
-    LED.writeSync(1);
     res.sendFile('./vistas/informacion.html', {
         root:__dirname
     })
