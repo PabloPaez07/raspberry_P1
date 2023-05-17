@@ -7,7 +7,6 @@ const app = express();
 
 app.use(express.static('public'));
 app.get('/', (req, res) => {
-    LED.write(0);
     console.log('apago_led');
     res.sendFile('./vistas/pagina_principal.html', {
         root:__dirname
