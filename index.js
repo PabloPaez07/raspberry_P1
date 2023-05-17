@@ -1,13 +1,14 @@
 const express = require('express');
-const Gpio = require('onoff').Gpio;
+const Gpio = require('rpi-gpio');
 
-const LED = new Gpio(1,'out');
-LED.write(0);
+Gpio.setMode(Gpio.MODE_RPI);
+Gpio.setup(18, Gpio.DIR_OUT);
+
+Gpio.output(18,0);
 const app = express();
 
 app.use(express.static('public'));
 app.get('/', (req, res) => {
-    console.log('apago_led');
     res.sendFile('./vistas/pagina_principal.html', {
         root:__dirname
     })
@@ -20,15 +21,13 @@ app.get('/informacion', (req, res) => {
 })
 
 app.get('/aplicacion', (req, res) => {
-    LED.write(1);
-    console.log('enciendo_led');
+    Gpio.output(18,1);
     res.sendFile('./vistas/aplicacion.html', {
         root:__dirname
     });
 })
 
 app.get('/contacto', (req, res) => {
-    LED.write(0);
     console.log('apago_led');
     res.sendFile('./vistas/contacto.html', {
         root:__dirname
