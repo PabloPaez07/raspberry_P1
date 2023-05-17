@@ -1,0 +1,32 @@
+h1{
+    color: rgb(0, 0, 0);
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 4px;
+}
+
+p{
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#div_introduccion{
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.198);
+    border: 1px solid black;
+    border-radius: 4px;
+    max-width: 1000px;
+}
+
+#div_contacto{
+    text-align: center;
+    margin: auto;
+    margin-top: 5%;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.198);
+    border: 1px solid black;
+    border-radius: 4px;
+    max-width: 1000px;
+}

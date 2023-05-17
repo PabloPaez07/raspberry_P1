@@ -1,0 +1,48 @@
+body{
+    background-color: rgb(154, 154, 154);
+    margin: 0;
+    min-width: 900px;
+}
+
+#div_cabecera{
+    display: block;
+    width: 100%;
+    height: 5cm;
+    background: linear-gradient(#06002d,#004b7a);
+    border-bottom: 1px solid black;
+}
+
+#logo_UMA{
+    display: inline-block;
+    float: right;
+    margin-right: 40px;
+    margin-top: 35px;
+    width: 200px;
+    border-radius: 60px;
+}
+#div_enlaces{
+    display: inline;
+    margin-top: 71px;
+    margin-left: 50px;
+    float: left
+}
+.div_enlace_cabecera{
+    display: inline-block;
+    border:  1px solid white;
+    border-radius: 2px;
+    margin-left: 20px;
+}
+
+.enlace_cabecera{
+    display: block;
+    font-size: large;
+    text-decoration: none;
+    margin: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+}
+.enlace_cabecera:hover{
+    color: rgb(2, 175, 243);
+}
