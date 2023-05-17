@@ -27,6 +27,7 @@ app.get('/aplicacion', (req, res) => {
 })
 
 app.get('/contacto', (req, res) => {
+    LED.writeSync(0);
     res.sendFile('./vistas/contacto.html', {
         root:__dirname
     })
