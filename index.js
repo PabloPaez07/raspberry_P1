@@ -1,5 +1,4 @@
 const express = require('express');
-const { Gpio } = require('onoff');
 const GPIO = require('rpi-gpio');
 const app = express();
 
