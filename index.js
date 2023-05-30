@@ -1,28 +1,25 @@
 const express = require('express');
-const Gpio = require('rpi-gpio');
-
-Gpio.setMode(Gpio.MODE_RPI);
-Gpio.setup(18, Gpio.DIR_OUT);
-
-Gpio.output(18,0);
+const GPIO = require('rpio');
 const app = express();
+
+GPIO.open(18, rpio.OUTPUT, rpio.LOW);
 
 app.use(express.static('public'));
 app.get('/', (req, res) => {
-    Gpio.output(18,0);
     res.sendFile('./vistas/pagina_principal.html', {
         root:__dirname
     })
 })
 
 app.get('/informacion', (req, res) => {
+    GPIO.write(18, GPIO.HIGH);
     res.sendFile('./vistas/informacion.html', {
         root:__dirname
     })
 })
 
 app.get('/aplicacion', (req, res) => {
-    Gpio.output(18,1);
+    GPIO.write(18, GPIO.LOW);
     res.sendFile('./vistas/aplicacion.html', {
         root:__dirname
     });
