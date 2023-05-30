@@ -3,6 +3,7 @@ const GPIO = require('rpi-gpio');
 const app = express();
 
 GPIO.setMode(GPIO.MODE_BCM);
+GPIO.setup(18, GPIO.DIR_OUT);
 
 app.use(express.static('public'));
 app.get('/', (req, res) => {
