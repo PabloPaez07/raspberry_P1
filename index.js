@@ -1,8 +1,9 @@
 const express = require('express');
-const GPIO = require('rpio');
+const { Gpio } = require('onoff');
+const GPIO = require('rpi-gpio');
 const app = express();
 
-GPIO.open(18, GPIO.OUTPUT, GPIO.LOW);
+GPIO.setMode(GPIO.MODE_BCM);
 
 app.use(express.static('public'));
 app.get('/', (req, res) => {
@@ -12,14 +13,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/informacion', (req, res) => {
-    GPIO.write(18, GPIO.HIGH);
+    GPIO.output(18,true);
     res.sendFile('./vistas/informacion.html', {
         root:__dirname
     })
 })
 
 app.get('/aplicacion', (req, res) => {
-    GPIO.write(18, GPIO.LOW);
+    GPIO.output(18,false);
     res.sendFile('./vistas/aplicacion.html', {
         root:__dirname
     });
