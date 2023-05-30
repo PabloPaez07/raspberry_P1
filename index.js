@@ -2,7 +2,7 @@ const express = require('express');
 const GPIO = require('rpio');
 const app = express();
 
-GPIO.open(18, rpio.OUTPUT, rpio.LOW);
+GPIO.open(18, GPIO.OUTPUT, GPIO.LOW);
 
 app.use(express.static('public'));
 app.get('/', (req, res) => {
