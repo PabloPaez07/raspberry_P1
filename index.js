@@ -27,7 +27,6 @@ app.get('/aplicacion', (req, res) => {
 })
 
 app.get('/contacto', (req, res) => {
-    console.log('apago_led');
     res.sendFile('./vistas/contacto.html', {
         root:__dirname
     })
