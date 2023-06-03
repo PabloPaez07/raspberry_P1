@@ -11,6 +11,7 @@ GPIO.setup(27,'out');
 GPIO.setup(22,'out');
 GPIO.setup(5,'out');
 GPIO.setup(6,'out');
+GPIO.setup(26,'in');
 
 app.get('/', (req, res) => {
     res.render('pagina_principal.ejs', {
@@ -110,6 +111,14 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
         break;
     }
 })
+
+app.get('/aplicacion/temp', (req,res)=>{
+    console.log(GPIO.read(26));
+    res.render('aplicacion.ejs', {
+        root:__dirname
+    });
+})
+
 
 app.listen(3000);
 console.log('Server on port ${3000}');
