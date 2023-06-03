@@ -12,7 +12,7 @@ GPIO.setup(22,'out');
 GPIO.setup(5,'out');
 GPIO.setup(6,'out');
 
-var sensorDHT11 = new RaspiSensors.sensorDHT11;
+var DHT11 = new RaspiSensors.sensorDHT11;
 
 app.get('/', (req, res) => {
     res.render('pagina_principal.ejs', {
@@ -115,7 +115,7 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
 
 app.get('/aplicacion/temp', (req,res)=>{
 
-    sensorDHT11.fetchInterval(function(err, data) {
+    DHT11.fetchInterval(function(err, data) {
         if(err) {
             console.error("An error occured!");
             console.error(err.cause);
