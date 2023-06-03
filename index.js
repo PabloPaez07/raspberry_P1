@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mqtt = require('mqtt');
 const GPIO = require('rpi-gpio');
-const RaspiSensors = require('raspi-sensors');
+const dht = require('node-dht-sensor');
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 GPIO.setMode('mode_bcm');
@@ -12,7 +12,6 @@ GPIO.setup(22,'out');
 GPIO.setup(5,'out');
 GPIO.setup(6,'out');
 
-var DHT11 = new RaspiSensors.sensorDHT11;
 
 app.get('/', (req, res) => {
     res.render('pagina_principal.ejs', {
@@ -114,17 +113,11 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
 })
 
 app.get('/aplicacion/temp', (req,res)=>{
-
-    DHT11.fetchInterval(function(err, data) {
-        if(err) {
-            console.error("An error occured!");
-            console.error(err.cause);
-            return;
-        }
-     
-        // Log the values
-        console.log(data);
-    }, 1);
+    dht.read(11, 26, function(err, temperature, humidity) {
+    if (!err) {
+        console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
+    }
+    });
 
     res.render('aplicacion.ejs', {
         root:__dirname
