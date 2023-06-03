@@ -113,7 +113,7 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
 })
 
 app.get('/aplicacion/temp', (req,res)=>{
-    console.log(GPIO.read(26));
+    console.log(GPIO.read(26,null));
     res.render('aplicacion.ejs', {
         root:__dirname
     });
