@@ -11,7 +11,7 @@ GPIO.setup(27,'out');
 GPIO.setup(22,'out');
 GPIO.setup(5,'out');
 GPIO.setup(6,'out');
-GPIO.setup(26,GPIO.DIR_IN);
+GPIO.setup(26,'in');
 
 app.get('/', (req, res) => {
     res.render('pagina_principal.ejs', {
@@ -114,7 +114,6 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
 
 app.get('/aplicacion/temp', (req,res)=>{
     console.log(GPIO.read(26,function(err, value){
-        if(err) throw err;
         console.log('Temperatura: ' + value);
     }));
     res.render('aplicacion.ejs', {
