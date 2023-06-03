@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mqtt = require('mqtt');
 const GPIO = require('rpi-gpio');
-
+const RaspiSensors = require('raspi-sensors');
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 GPIO.setMode('mode_bcm');
@@ -11,7 +11,8 @@ GPIO.setup(27,'out');
 GPIO.setup(22,'out');
 GPIO.setup(5,'out');
 GPIO.setup(6,'out');
-GPIO.setup(26,'in');
+
+var sensorDHT11 = new RaspiSensors.sensorDHT11;
 
 app.get('/', (req, res) => {
     res.render('pagina_principal.ejs', {
@@ -113,9 +114,18 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
 })
 
 app.get('/aplicacion/temp', (req,res)=>{
-    GPIO.read(26,function(err, value){
-        console.log('Temperatura: ' + value);
-    });
+
+    sensorDHT11.fetchInterval(function(err, data) {
+        if(err) {
+            console.error("An error occured!");
+            console.error(err.cause);
+            return;
+        }
+     
+        // Log the values
+        console.log(data);
+    }, 1);
+
     res.render('aplicacion.ejs', {
         root:__dirname
     });
