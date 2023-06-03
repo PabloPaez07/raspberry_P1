@@ -9,6 +9,8 @@ GPIO.setMode('mode_bcm');
 GPIO.setup(17,'out');
 GPIO.setup(27,'out');
 GPIO.setup(22,'out');
+GPIO.setup(5,'out');
+GPIO.setup(6,'out');
 
 app.get('/', (req, res) => {
     res.render('pagina_principal.ejs', {
@@ -76,6 +78,32 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
                 })
             })
             GPIO.output(22,(req.params.estado == "1"));
+        break;
+        case "4":
+            client.on('connect', function()
+            {
+                client.subscribe('topic_luces', function (error)
+                {
+                    if(!error)
+                    {
+                        client.publish('topic_luces', 'Enciendo habitacion 3')
+                    }
+                })
+            })
+            GPIO.output(5,(req.params.estado == "1"));
+        break;
+        case "5":
+            client.on('connect', function()
+            {
+                client.subscribe('topic_luces', function (error)
+                {
+                    if(!error)
+                    {
+                        client.publish('topic_luces', 'Enciendo habitacion 3')
+                    }
+                })
+            })
+            GPIO.output(6,(req.params.estado == "1"));
         break;
         default:
             return 0;
