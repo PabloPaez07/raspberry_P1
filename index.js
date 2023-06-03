@@ -29,15 +29,12 @@ app.get('/aplicacion', (req, res) => {
 })
 
 app.get('/contacto', (req, res) => {
-    GPIO.output(17,false);
-    GPIO.output(22,false);
-    GPIO.output(27,false);
     res.render('contacto.ejs', {
         root:__dirname
     })
 })
 
-app.get('/aplicacion/luces/:num_boton', (req, res) => {
+app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
     var client = mqtt.connect('tcp://test.mosquitto.org');
     switch(req.params.num_boton)
     {
@@ -53,7 +50,7 @@ app.get('/aplicacion/luces/:num_boton', (req, res) => {
                     }
                 })
             })
-            GPIO.output(17,true);
+            GPIO.output(17,(req.params.estado == "1"));
         break;
         case "2":
             console.log('enciendo luz 2');
@@ -67,7 +64,7 @@ app.get('/aplicacion/luces/:num_boton', (req, res) => {
                     }
                 })
             })
-            GPIO.output(27,true);
+            GPIO.output(27,(req.params.estado == "1"));
         break;
         case "3":
             console.log('enciendo luz 3');
@@ -81,7 +78,7 @@ app.get('/aplicacion/luces/:num_boton', (req, res) => {
                     }
                 })
             })
-            GPIO.output(22,true);
+            GPIO.output(22,(req.params.estado == "1"));
         break;
         default:
             return 0;

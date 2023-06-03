@@ -47,9 +47,48 @@ p{
     text-align: center;
     margin-top: 1%;
     margin-left: 3%;
+    margin-bottom: 5%;
     padding: 5px;
     background-color: rgba(0, 0, 0, 0.198);
     border: 1px solid black;
     border-radius: 4px;
     max-width: 200px;
+}
+
+.boton_gpio_on
+{
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px;
+    margin: 2%;
+    border: 1px solid black;
+    border-radius: 3px;
+    background: #ffee04;
+    font-size: large;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.boton_gpio_off
+{
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px;
+    margin: 2%;
+    border: 1px solid black;
+    border-radius: 3px;
+    background: #e94301;
+    font-size: large;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#div_control_luces
+{
+    background: rgb(224, 223, 223);
+    display: none;
+    padding: 15px;
+    margin-left: 3%;
+    border: 1px solid black;
+    border-radius: 5px;
+    max-width: 440px;
 }
