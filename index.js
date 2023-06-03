@@ -113,9 +113,9 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
 })
 
 app.get('/aplicacion/temp', (req,res)=>{
-    console.log(GPIO.read(26,function(err, value){
+    GPIO.read(26,function(err, value){
         console.log('Temperatura: ' + value);
-    }));
+    });
     res.render('aplicacion.ejs', {
         root:__dirname
     });
