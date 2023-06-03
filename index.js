@@ -39,7 +39,6 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
     switch(req.params.num_boton)
     {
         case "1":
-            console.log('enciendo luz 1');
             client.on('connect', function()
             {
                 client.subscribe('topic_luces', function (error)
@@ -53,7 +52,6 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
             GPIO.output(17,(req.params.estado == "1"));
         break;
         case "2":
-            console.log('enciendo luz 2');
             client.on('connect', function()
             {
                 client.subscribe('topic_luces', function (error)
@@ -67,7 +65,6 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
             GPIO.output(27,(req.params.estado == "1"));
         break;
         case "3":
-            console.log('enciendo luz 3');
             client.on('connect', function()
             {
                 client.subscribe('topic_luces', function (error)
