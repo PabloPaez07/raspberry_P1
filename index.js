@@ -74,7 +74,7 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
     }
 })
 
-const client = mqtt.connect('mqtts://broker.emqx.io:8083',{
+const client = mqtt.connect('broker.emqx.io:8083',{
     clientId,
     username,
     password,
