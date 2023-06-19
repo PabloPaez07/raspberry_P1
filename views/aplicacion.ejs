@@ -12,6 +12,7 @@
             <button>Dispositivos</button>
         </div>
         <%- include('includes/control_luces.ejs') -%>
+        <%- include('includes/div_control_temp') -%>
     </body>
 </html>
 
@@ -33,24 +34,4 @@
         div_control_luces.style.display = 'none';
         div_control_temp.style.display = 'block';
     }
-</script>
-
-<script>
-    function ajax_temp()
-    {
-        const http = new XMLHttpRequest();
-        const ruta = document.URL + '/temp';
-
-        http.onreadystatechange = function()
-        {
-            if(this.readyState == 4 && this.status == 200){
-                console.log(this.responseText);
-            }
-        }
-
-        http.open("GET", ruta);
-        http.send();
-    }
-
-    document.getElementById("boton_temp");
 </script>
