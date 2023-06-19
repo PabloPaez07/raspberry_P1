@@ -50,13 +50,15 @@ app.get('/contacto', (req, res) => {
 
 client.on('connect', function()
             {
+                console.log('conectado a broker mqtt');
                 client.subscribe('topic_luces', function (error)
                 {
                     if(error)
                     {
                         console.log('error conectando a topic_luces');
+                        return;
                     }else{
-                        client.publish('topic_luces',"Hola: soy raspberryPi");
+                        client.publish('topic_luces',"Hola: soy raspberryPi",0);
                     }
                 })
                 client.subscribe('habitacion/1'), function (error)
@@ -64,8 +66,9 @@ client.on('connect', function()
                     if(error)
                     {
                         console.log('error conectando a habitacion/1');
+                        return;
                     }else{
-                        client.publish('topic_luces',"Hola: soy raspberryPi");
+                        client.publish('habitacion/1',"Hola: soy raspberryPi",0);
                     }
                 }
             });
