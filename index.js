@@ -15,8 +15,9 @@ GPIO.setup(22,'out');
 GPIO.setup(5,'out');
 GPIO.setup(6,'out');
 
-const client = mqtt.connect('broker.emqx.io:1833',{
-    clean: true,
+const clientId = 'emqx_nodejs_' + Math.random().toString(16).substring(2, 8);
+const client = mqtt.connect('mqtt://broker.emqx.io:1833',{
+    clientId,
     connectTimeout: 4000,
     username: 'RaspberryPablo',
     password: 'anv64ahx',
