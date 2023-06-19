@@ -3,6 +3,7 @@ const app = express();
 const mqtt = require('mqtt');
 const GPIO = require('rpi-gpio');
 const fs = require('fs');
+
 const port = 3000;
 
 app.use(express.static('public'));
@@ -15,7 +16,7 @@ GPIO.setup(22,'out');
 GPIO.setup(5,'out');
 GPIO.setup(6,'out');
 
-const clientId = 'mqttx_bb90771c';
+const clientId = 'emqx_nodejs_' + Math.random().toString(16).substring(2, 8);
 const username = 'RaspberryPablo';
 const password = 'anv64ahx';
 
