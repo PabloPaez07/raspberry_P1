@@ -3,6 +3,9 @@ const app = express();
 const mqtt = require('mqtt');
 const GPIO = require('rpi-gpio');
 const dht = require('node-dht-sensor');
+
+const port = 3000;
+
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 GPIO.setMode('mode_bcm');
@@ -125,6 +128,6 @@ app.get('/aplicacion/temp', (req,res)=>{
 })
 
 
-app.listen(3000);
-console.log('Server on port ${3000}');
+app.listen(port);
+console.log(`Server on port ${port}`);
 
