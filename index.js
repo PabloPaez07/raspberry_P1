@@ -107,8 +107,8 @@ client.on('connect', function()
             });
 
 client.on('message', function(topic, message, packet){
-    console.log("Topic is "+topic);
-    console.log("Message is "+message);
+    var resultado = JSON.parse(message);
+    console.log(resultado);
 })
 
 app.listen(port);
