@@ -114,6 +114,7 @@ client.on('message', function(topic, message, packet){
     {
         resultado = JSON.parse(message);
         console.log(resultado);
+        res.render('control_temp.ejs', {data:resultado,root:__dirname});
     }
     
 })
