@@ -115,18 +115,14 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
     }
 })
 
-app.get('/aplicacion/temp', (req,res)=>{
+app.get('/aplicacion/temp/:habitacion/:sensor', (req,res)=>{
     console.log('hola?');
-    dht.read(11, 26, function(err, temperature, humidity) {
-        console.log("hola");
-    if (!err) {
-        console.log(`leyendo humedad y temperatura`);
+    switch (req.params.habitacion)
+    {
+        case 1:
+            console.log("hola");
+            break;
     }
-    });
-
-    res.render('aplicacion.ejs', {
-        root:__dirname
-    });
 })
 
 
