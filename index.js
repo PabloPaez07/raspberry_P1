@@ -16,12 +16,12 @@ GPIO.setup(5,'out');
 GPIO.setup(6,'out');
 
 const clientId = 'emqx_nodejs_' + Math.random().toString(16).substring(2, 8);
+const username = 'RaspberryPablo';
+const password = 'anv64ahx';
 const client = mqtt.connect('mqtt://broker.emqx.io:1833',{
     clientId,
-    connectTimeout: 4000,
-    username: 'RaspberryPablo',
-    password: 'anv64ahx',
-    reconnectPeriod: 1000,
+    username,
+    password
 });
 
 app.get('/', (req, res) => {
