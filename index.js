@@ -106,9 +106,16 @@ client.on('connect', function()
                 }
             });
 
+var resultado;
+
 client.on('message', function(topic, message, packet){
-    var resultado = JSON.parse(message);
-    console.log(resultado);
+
+    if(topic === "habitacion/1")
+    {
+        resultado = JSON.parse(message);
+        console.log(resultado);
+    }
+    
 })
 
 app.listen(port);
