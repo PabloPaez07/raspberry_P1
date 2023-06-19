@@ -24,8 +24,6 @@ const client = mqtt.connect('mqtt://broker.emqx.io:8083',{
     reconnectPeriod: 1000,
 });
 
-client.onMessageArrived = onMessageArrived;
-
 app.get('/', (req, res) => {
     res.render('pagina_principal.ejs', {
         root:__dirname
