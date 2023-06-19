@@ -3,7 +3,6 @@ const app = express();
 const mqtt = require('mqtt');
 const GPIO = require('rpi-gpio');
 const fs = require('fs');
-const cli = require('nodemon/lib/cli');
 const port = 3000;
 
 app.use(express.static('public'));
@@ -16,7 +15,7 @@ GPIO.setup(22,'out');
 GPIO.setup(5,'out');
 GPIO.setup(6,'out');
 
-const client = mqtt.connect('mqtt://broker.emqx.io:8083',{
+const client = mqtt.connect('broker.emqx.io:1833',{
     clean: true,
     connectTimeout: 4000,
     username: 'RaspberryPablo',
@@ -55,6 +54,8 @@ client.on('connect', function()
                     if(error)
                     {
                         console.log('error conectando a topic_luces');
+                    }else{
+                        client.publish('topic_luces',"Hola: soy raspberryPi");
                     }
                 })
                 client.subscribe('habitacion/1'), function (error)
@@ -62,6 +63,8 @@ client.on('connect', function()
                     if(error)
                     {
                         console.log('error conectando a habitacion/1');
+                    }else{
+                        client.publish('topic_luces',"Hola: soy raspberryPi");
                     }
                 }
             });
