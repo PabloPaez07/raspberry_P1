@@ -117,8 +117,6 @@ client.on('message', function(topic, message, packet){
         console.log(resultado);
         temperatura = resultado['Temperatura'];
         humedad = resultado['Humedad'];
-        console.log(temperatura);
-        console.log(humedad);
     }
     
 })
