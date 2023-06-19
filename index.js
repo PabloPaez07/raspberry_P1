@@ -116,9 +116,11 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
 })
 
 app.get('/aplicacion/temp', (req,res)=>{
+    console.log('hola?');
     dht.read(11, 26, function(err, temperature, humidity) {
+        console.log("hola");
     if (!err) {
-        console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
+        console.log(`leyendo humedad y temperatura`);
     }
     });
 
