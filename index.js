@@ -115,8 +115,8 @@ client.on('message', function(topic, message, packet){
     {
         resultado = JSON.parse(message);
         console.log(resultado);
-        temperatura = resultado.Temperatura;
-        humedad = resultado.Humedad;
+        temperatura = resultado['Temperatura'];
+        humedad = resultado['Humedad'];
         console.log(temperatura);
         console.log(humedad);
     }
