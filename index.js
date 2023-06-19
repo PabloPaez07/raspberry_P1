@@ -119,7 +119,7 @@ app.get('/aplicacion/temp/:habitacion/:sensor', (req,res)=>{
     console.log('hola?');
     switch (req.params.habitacion)
     {
-        case 1:
+        case "1":
             console.log("hola");
             break;
     }
