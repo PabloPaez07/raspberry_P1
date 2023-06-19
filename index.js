@@ -48,73 +48,46 @@ app.get('/contacto', (req, res) => {
     })
 })
 
+client.on('connect', function()
+            {
+                client.subscribe('topic_luces', function (error)
+                {
+                    if(error)
+                    {
+                        console.log('error conectando a topic_luces');
+                    }
+                })
+                client.subscribe('habitacion/1'), function (error)
+                {
+                    if(error)
+                    {
+                        console.log('error conectando a habitacion/1');
+                    }
+                }
+            });
+
 app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
     var client = mqtt.connect('tcp://test.mosquitto.org');
     switch(req.params.num_boton)
     {
         case "1":
-            client.on('connect', function()
-            {
-                client.subscribe('topic_luces', function (error)
-                {
-                    if(!error)
-                    {
-                        client.publish('topic_luces', 'Enciendo habitacion 1')
-                    }
-                })
-            })
+            client.publish('topic_luces', 'Enciendo habitacion 1')
             GPIO.output(17,(req.params.estado == "1"));
         break;
         case "2":
-            client.on('connect', function()
-            {
-                client.subscribe('topic_luces', function (error)
-                {
-                    if(!error)
-                    {
-                        client.publish('topic_luces', 'Enciendo habitacion 2')
-                    }
-                })
-            })
+            client.publish('topic_luces', 'Enciendo habitacion 2')
             GPIO.output(27,(req.params.estado == "1"));
         break;
         case "3":
-            client.on('connect', function()
-            {
-                client.subscribe('topic_luces', function (error)
-                {
-                    if(!error)
-                    {
-                        client.publish('topic_luces', 'Enciendo habitacion 3')
-                    }
-                })
-            })
+            client.publish('topic_luces', 'Enciendo habitacion 3')
             GPIO.output(22,(req.params.estado == "1"));
         break;
         case "4":
-            client.on('connect', function()
-            {
-                client.subscribe('topic_luces', function (error)
-                {
-                    if(!error)
-                    {
-                        client.publish('topic_luces', 'Enciendo habitacion 3')
-                    }
-                })
-            })
+            client.publish('topic_luces', 'Enciendo habitacion 3')
             GPIO.output(5,(req.params.estado == "1"));
         break;
         case "5":
-            client.on('connect', function()
-            {
-                client.subscribe('topic_luces', function (error)
-                {
-                    if(!error)
-                    {
-                        client.publish('topic_luces', 'Enciendo habitacion 3')
-                    }
-                })
-            })
+            client.publish('topic_luces', 'Enciendo habitacion 3')
             GPIO.output(6,(req.params.estado == "1"));
         break;
         default:
@@ -123,24 +96,11 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
     }
 })
 
-app.get('/aplicacion/temp/:habitacion/:sensor', (req,res)=>{
-    console.log('hola?');
-    switch (req.params.habitacion)
-    {
-        case "1":
-            client.on('connect', function()
-            {
-                client.on('message', function (topic, message, packet)
-                {
-                    consogle.log("message is "+ message);
-                    console.log("packet =" +JSON.stringify(packet));
-                    console.log("topic is "+ topic);
-                })
-            })
-            break;
-    }
+client.on('message', function(topic, message, packet){
+    console.log("Topic is "+topic);
+    console.log("Message is "+message);
+    console.log("Packet is "+JSON.stringify(packet));
 })
-
 
 app.listen(port);
 console.log(`Server on port ${port}`);
