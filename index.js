@@ -2,12 +2,13 @@ const express = require('express');
 const app = express();
 const mqtt = require('mqtt');
 const GPIO = require('rpi-gpio');
-const dht = require('node-dht-sensor');
-
+const fs = require('fs');
+const cli = require('nodemon/lib/cli');
 const port = 3000;
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
+
 GPIO.setMode('mode_bcm');
 GPIO.setup(17,'out');
 GPIO.setup(27,'out');
@@ -15,6 +16,15 @@ GPIO.setup(22,'out');
 GPIO.setup(5,'out');
 GPIO.setup(6,'out');
 
+const client = mqtt.connect('mqtt://broker.emqx.io:8083',{
+    clean: true,
+    connectTimeout: 4000,
+    username: 'RaspberryPablo',
+    password: 'anv64ahx',
+    reconnectPeriod: 1000,
+});
+
+client.onMessageArrived = onMessageArrived;
 
 app.get('/', (req, res) => {
     res.render('pagina_principal.ejs', {
@@ -120,7 +130,15 @@ app.get('/aplicacion/temp/:habitacion/:sensor', (req,res)=>{
     switch (req.params.habitacion)
     {
         case "1":
-            console.log("hola");
+            client.on('connect', function()
+            {
+                client.on('message', function (topic, message, packet)
+                {
+                    consogle.log("message is "+ message);
+                    console.log("packet =" +JSON.stringify(packet));
+                    console.log("topic is "+ topic);
+                })
+            })
             break;
     }
 })
