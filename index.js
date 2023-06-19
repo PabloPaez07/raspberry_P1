@@ -107,17 +107,18 @@ client.on('connect', function()
             });
 
 var resultado;
-
+var temperatura;
+var humedad;
 client.on('message', function(topic, message, packet){
 
     if(topic === "habitacion/1")
     {
         resultado = JSON.parse(message);
         console.log(resultado);
-        app.get('*',function(req,res){  
-            res.render('control_temp.ejs', {data:resultado,root:__dirname});
-        })
-    
+        temperatura = resultado.temperatura;
+        humedad = resultado.humedad;
+        console.log(temperatura);
+        console.log(humedad);
     }
     
 })
