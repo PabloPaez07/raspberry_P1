@@ -109,7 +109,6 @@ client.on('connect', function()
 client.on('message', function(topic, message, packet){
     console.log("Topic is "+topic);
     console.log("Message is "+message);
-    console.log("Packet is "+JSON.stringify(packet));
 })
 
 app.listen(port);
