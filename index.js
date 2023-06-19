@@ -18,11 +18,6 @@ GPIO.setup(6,'out');
 const clientId = 'emqx_nodejs_' + Math.random().toString(16).substring(2, 8);
 const username = 'RaspberryPablo';
 const password = 'anv64ahx';
-const client = mqtt.connect('mqtt://broker.emqx.io:1833',{
-    clientId,
-    username,
-    password
-});
 
 app.get('/', (req, res) => {
     res.render('pagina_principal.ejs', {
@@ -47,31 +42,6 @@ app.get('/contacto', (req, res) => {
         root:__dirname
     })
 })
-
-client.on('connect', function()
-            {
-                console.log('conectado a broker mqtt');
-                client.subscribe('topic_luces', function (error)
-                {
-                    if(error)
-                    {
-                        console.log('error conectando a topic_luces');
-                        return;
-                    }else{
-                        client.publish('topic_luces',"Hola: soy raspberryPi",0);
-                    }
-                })
-                client.subscribe('habitacion/1'), function (error)
-                {
-                    if(error)
-                    {
-                        console.log('error conectando a habitacion/1');
-                        return;
-                    }else{
-                        client.publish('habitacion/1',"Hola: soy raspberryPi",0);
-                    }
-                }
-            });
 
 app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
     var client = mqtt.connect('tcp://test.mosquitto.org');
@@ -102,6 +72,37 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
         break;
     }
 })
+
+const client = mqtt.connect('mqtt://broker.emqx.io:1833',{
+    clientId,
+    username,
+    password
+});
+
+client.on('connect', function()
+            {
+                console.log('conectado a broker mqtt');
+                client.subscribe('topic_luces', function (error)
+                {
+                    if(error)
+                    {
+                        console.log('error conectando a topic_luces');
+                        return;
+                    }else{
+                        client.publish('topic_luces',"Hola: soy raspberryPi",0);
+                    }
+                })
+                client.subscribe('habitacion/1'), function (error)
+                {
+                    if(error)
+                    {
+                        console.log('error conectando a habitacion/1');
+                        return;
+                    }else{
+                        client.publish('habitacion/1',"Hola: soy raspberryPi",0);
+                    }
+                }
+            });
 
 client.on('message', function(topic, message, packet){
     console.log("Topic is "+topic);
