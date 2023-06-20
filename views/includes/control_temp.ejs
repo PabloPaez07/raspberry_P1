@@ -6,7 +6,7 @@
     <script>
         let socket = io(); // Connect the socket on the port defined before.
 
-        socket.on('update-value', function (value) { // When a 'update-value' event is received, execute the following code.
+        socket.on('update-value', function (value) {
             console.log('received new value', value);
             $('#temperatura_display').text(value);
         });
