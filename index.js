@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
+const http = require('http');
 const mqtt = require('mqtt');
 const GPIO = require('rpi-gpio');
 const fs = require('fs');
-var io = require('socket.io')(8080);
+const {Server} = require('socket.io')
 const port = 3000;
+const server = http.createServer(app);
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -19,6 +21,8 @@ GPIO.setup(6,'out');
 const clientId = 'emqx_nodejs_' + Math.random().toString(16).substring(2, 8);
 const username = 'RaspberryPablo';
 const password = 'anv64ahx';
+
+const io = new Server(server);
 
 app.get('/', (req, res) => {
     res.render('pagina_principal.ejs', {
