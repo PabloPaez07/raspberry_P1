@@ -120,7 +120,10 @@ client.on('message', function(topic, message, packet){
         humedad = resultado['Humedad'];
         sensacion_termica = temperatura + 0.348 * (humedad/100 * 6.105 * Math.pow(Math.E,(17.27*temperatura/(237.7+temperatura)))) - 4.25;
         console.log(`Sensación térmica: ${sensacion_termica}`);
-        Socket.emit('update-value',temperatura);
+        io.on('connection', function (socket){
+            console.log('conexion socket');
+            socket.emit('update-value',temperatura);
+        }
     }
     
 })
