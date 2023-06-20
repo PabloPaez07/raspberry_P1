@@ -1,7 +1,5 @@
 const express = require('express');
 const app = express();
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
 const mqtt = require('mqtt');
 const GPIO = require('rpi-gpio');
 const fs = require('fs');
@@ -111,6 +109,7 @@ var resultado;
 var temperatura;
 var humedad;
 var sensacion_termica;
+
 client.on('message', function(topic, message, packet){
 
     if(topic === "habitacion/1")
@@ -125,17 +124,6 @@ client.on('message', function(topic, message, packet){
     
 })
 
-io.on('connection', function (socket){
-    console.log('conexion socket');
-    setInterval(function (){
-        socket.emit('update-value',temperatura);
-    }, 1000);
-});
-
 app.listen(port);
 console.log(`Server on port ${port}`);
-
-server.listen(8080, () => {
-    console.log(`Servidor en el puerto 8080`);
-})
 

@@ -1,15 +1,20 @@
 <div id = "div_control_temp">
     <span id = "temperatura_display"> Temperatura </span>
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../../index.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        let socket = io(); // Connect the socket on the port defined before.
-
-        socket.on('update-value', function (value) {
-            console.log('received new value', value);
-            $('#temperatura_display').text(value);
-        });
-        
-    </script>
 </div>
+<script src="jquery-3.6.4.min.js"></script>
+<script src = "../../index.js"></script>
+<script>
+
+    client.on('message', function(topic, message, packet){
+
+    if(topic === "habitacion/1")
+    {
+        resultado = JSON.parse(message);
+        temperatura = resultado['Temperatura'];
+        humedad = resultado['Humedad'];
+        sensacion_termica = temperatura + 0.348 * (humedad/100 * 6.105 * Math.pow(Math.E,(17.27*temperatura/(237.7+temperatura)))) - 4.25;
+        $('#temperatura_display').text(temperatura);
+    }
+
+    })
+</script>
