@@ -3,7 +3,7 @@ const app = express();
 const mqtt = require('mqtt');
 const GPIO = require('rpi-gpio');
 const fs = require('fs');
-
+var io = require('socket.io')(8080);
 const port = 3000;
 
 app.use(express.static('public'));
@@ -120,6 +120,7 @@ client.on('message', function(topic, message, packet){
         humedad = resultado['Humedad'];
         sensacion_termica = temperatura + 0.348 * (humedad/100 * 6.105 * Math.pow(Math.E,(17.27*temperatura/(237.7+temperatura)))) - 4.25;
         console.log(`Sensación térmica: ${sensacion_termica}`);
+        Socket.emit('update-value',temperatura);
     }
     
 })

@@ -1,3 +1,12 @@
 <div id = "div_control_temp">
-    
+    <span id = "temperatura_display"> Temperatura </span>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script>
+        var socket = io('http://localhost:8080'); // Connect the socket on the port defined before.
+
+        socket.on('update-value', function (value) { // When a 'update-value' event is received, execute the following code.
+            console.log('received new value', value);
+            $('#temperatura_display').text(value);
+        });
+    </script>
 </div>
