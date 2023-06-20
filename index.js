@@ -6,7 +6,6 @@ const mqtt = require('mqtt');
 const GPIO = require('rpi-gpio');
 const fs = require('fs');
 const port = 3000;
-eServer(app);
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
