@@ -3,6 +3,7 @@ const app = express();
 const mqtt = require('mqtt');
 const GPIO = require('rpi-gpio');
 const fs = require('fs');
+const Math = require(Math);
 
 const port = 3000;
 
@@ -118,11 +119,7 @@ client.on('message', function(topic, message, packet){
         console.log(resultado);
         temperatura = resultado['Temperatura'];
         humedad = resultado['Humedad'];
-        humedad_100 = humedad/100;
-        sensacion_termica = -8.7849476 + 1,61139411 * temperatura + 2,338548839*humedad_100 - 
-                             0.14611605*temperatura*humedad_100 - 0.012308094*temperatura*temperatura - 
-                             0.016424828*humedad_100*humedad_100 + 0.002211732*temperatura*temperatura*humedad_100 +
-                             0.00072546*temperatura*humedad_100*humedad_100 - 0.000003582*temperatura*temperatura*humedad_100*humedad_100;
+        sensacion_termica = temperatura + 0.348 * (humedad/100 * 6.105 * Math.pow(Math.E,(17,27*temperatura/(237.7+temperatura)))) - 4.25;
         console.log(`Sensación térmica: ${sensacion_termica}`);
     }
     
