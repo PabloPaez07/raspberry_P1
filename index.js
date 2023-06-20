@@ -123,7 +123,7 @@ client.on('message', function(topic, message, packet){
         io.on('connection', function (socket){
             console.log('conexion socket');
             socket.emit('update-value',temperatura);
-        }
+        });
     }
     
 })
