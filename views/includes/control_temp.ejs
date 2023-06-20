@@ -3,8 +3,7 @@
 </div>
 <script src="jquery-3.6.4.min.js"></script>
 <script src = "../../index.js"></script>
-<script>
-
+<%-
     client.on('message', function(topic, message, packet){
 
     if(topic === "habitacion/1")
@@ -17,4 +16,4 @@
     }
 
     })
-</script>
+-%>
