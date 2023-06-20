@@ -120,7 +120,7 @@ client.on('message', function(topic, message, packet){
         humedad = resultado['Humedad'];
         sensacion_termica = -8.7849476 + 1,61139411 * temperatura + 2,338548839*humedad - 
                              0.14611605*temperatura*humedad - 0.012308094*temperatura*temperatura - 
-                             0.016424828*humedad*humedad + 0.002211732*temperatur*temperatura*humedad +
+                             0.016424828*humedad*humedad + 0.002211732*temperatura*temperatura*humedad +
                              0.00072546*temperatura*humedad*humedad - 0.000003582*temperatura*temperatura*humedad*humedad;
         console.log(`Sensación térmica: ${sensacion_termica}`);
     }
