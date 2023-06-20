@@ -3,7 +3,6 @@ const app = express();
 const mqtt = require('mqtt');
 const GPIO = require('rpi-gpio');
 const fs = require('fs');
-const Math = require(Math);
 
 const port = 3000;
 
