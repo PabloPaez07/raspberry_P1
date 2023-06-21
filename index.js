@@ -33,8 +33,7 @@ app.get('/informacion', (req, res) => {
 
 app.get('/aplicacion', (req, res) => {
     res.render('aplicacion.ejs', {
-        root:__dirname,
-        helper: leerMQTT
+        root:__dirname
     },{async: true});
 })
 
