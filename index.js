@@ -18,7 +18,6 @@ GPIO.setup(22,'out');
 GPIO.setup(5,'out');
 GPIO.setup(6,'out');
 
-const mqtt = require('mqtt');
 const clientId = 'emqx_nodejs_' + Math.random().toString(16).substring(2, 8);
 const username = 'RaspberryPablo';
 const password = 'anv64ahx';
