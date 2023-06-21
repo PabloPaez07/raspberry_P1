@@ -103,3 +103,7 @@ p{
     border-radius: 5px;
     max-width: 440px;
 }
+
+.display{
+    background-color: gray;
+}

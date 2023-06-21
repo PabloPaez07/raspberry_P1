@@ -70,7 +70,6 @@ app.get('/contacto', (req, res) => {
 })
 
 app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
-    var client = mqtt.connect('tcp://test.mosquitto.org');
     switch(req.params.num_boton)
     {
         case "1":
@@ -99,24 +98,6 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
     }
 })
 
-    var resultado;
-    var temperatura;
-    var humedad;
-    var sensacion_termica;
-
-    client.on('message', function(topic, message, packet){
-
-        if(topic === "habitacion/1")
-        {
-            resultado = JSON.parse(message);
-            console.log(resultado);
-            temperatura = resultado['Temperatura'];
-            humedad = resultado['Humedad'];
-            // sensacion_termica = temperatura + 0.348 * (humedad/100 * 6.105 * Math.pow(Math.E,(17.27*temperatura/(237.7+temperatura)))) - 4.25;
-            // console.log(`Sensación térmica: ${sensacion_termica}`);
-            const mensaje = temperatura.toString();
-        }
-    })
 app.get('/datos', (req, res) => {
     // Aquí puedes obtener los nuevos datos desde tu broker MQTT o desde cualquier otra fuente de datos
     const nuevosDatos = obtenerNuevosDatos();
