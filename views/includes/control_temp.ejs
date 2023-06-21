@@ -9,23 +9,16 @@
     function actualizarTemp(mensaje) {
       $('#temperatura_display').text(mensaje);
     }
+    var client = mqtt.connect('ws://broker.emqx.io:8083/mqtt');
+    client.on('connect', function () {
+      client.subscribe('habitacion/1'); // Reemplaza con el tema al que deseas suscribirte
+    });
 
-    // Función para realizar la solicitud AJAX
-    function obtenerMensajeMQTT() {
-      $.ajax({
-        url: '/mensaje-mqtt',
-        method: 'GET',
-        success: function(data) {
-          actualizarTemp(data.mensaje);
-        },
-        error: function(err) {
-          console.log('Error al obtener el mensaje MQTT:', err);
-        }
-      });
-    }
-
-    // Obtener el mensaje MQTT inicial al cargar la página
-    obtenerMensajeMQTT();
+    // Manejar los mensajes MQTT recibidos
+    client.on('message', function (topic, message) {
+      var mensaje = message.toString(); // Convertir el mensaje a una cadena
+      actualizarTemp(mensaje);
+    });
 
     // Establecer un intervalo para actualizar el mensaje cada cierto tiempo (por ejemplo, cada 5 segundos)
     setInterval(obtenerMensajeMQTT, 500);
