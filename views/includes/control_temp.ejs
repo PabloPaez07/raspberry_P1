@@ -1,7 +1,4 @@
 <div id = "div_control_temp">
-    <span id = "temperatura_display">Temperatura: </span>
+    <p id = "temperatura_display">Temperatura: <%= mensajeMQTT %></p>
 </div>
 <script src="jquery-3.6.4.min.js"></script>
-<script>
-    alert(<% helper.leerTemperatura(cliente) %>);
-</script>
