@@ -20,6 +20,6 @@ module.exports ={
             
         })
 
-        return temperatura.toString();
+        return String(temperatura);
     }
 }
