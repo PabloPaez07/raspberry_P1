@@ -10,7 +10,6 @@
   $(document).ready(function() {
 
     const d = new Date();
-    let hour = d.getHours();
 
     function actualizarTemp(mensaje) {
       $('#temperatura_display').text(mensaje);
@@ -50,7 +49,7 @@
       actualizarTemp("Temperatura: " + resultado['Temperatura']);
       actualizarHum("Humedad: " + resultado['Humedad']);
       console.log(hour);
-      agregarDatos(hour,parseInt(resultado['Temperatura']),parseInt(resultado['Humedad']));
+      agregarDatos(d.getDate(),parseInt(resultado['Temperatura']),parseInt(resultado['Humedad']));
     });
 
     var tiempo = []; // Array para almacenar los valores de tiempo
