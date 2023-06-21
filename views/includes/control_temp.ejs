@@ -49,7 +49,8 @@
         }
       actualizarTemp("Temperatura: " + resultado['Temperatura']);
       actualizarHum("Humedad: " + resultado['Humedad']);
-      agregarDatos(hour,parseFloat(resultado['Temperatura']),parseFloat(resultado['Humedad']));
+      console.log(hour);
+      agregarDatos(hour,parseInt(resultado['Temperatura']),parseInt(resultado['Humedad']));
     });
 
     var tiempo = []; // Array para almacenar los valores de tiempo
