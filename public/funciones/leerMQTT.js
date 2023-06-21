@@ -20,6 +20,6 @@ module.exports ={
             
         })
 
-        return String(temperatura);
+        return `Temperatura: ${temperatura}`;
     }
 }
