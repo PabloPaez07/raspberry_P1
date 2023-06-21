@@ -16,7 +16,7 @@ module.exports ={
                 humedad = resultado['Humedad'];
                 // sensacion_termica = temperatura + 0.348 * (humedad/100 * 6.105 * Math.pow(Math.E,(17.27*temperatura/(237.7+temperatura)))) - 4.25;
                 // console.log(`Sensación térmica: ${sensacion_termica}`);
-                return `Temperatura: ${temperatura}`;
+                $('#temperatura_display').text(temperatura);
             }
             
         })
