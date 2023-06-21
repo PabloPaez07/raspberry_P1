@@ -8,8 +8,9 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   $(document).ready(function() {
-
-    const d = new Date();
+    var tiempo = []; // Array para almacenar los valores de tiempo
+    var temperatura = []; // Array para almacenar los valores de temperatura
+    var humedad = []; // Array para almacenar los valores de humedad
 
     function actualizarTemp(mensaje) {
       $('#temperatura_display').text(mensaje);
@@ -49,12 +50,8 @@
       actualizarTemp("Temperatura: " + resultado['Temperatura']);
       actualizarHum("Humedad: " + resultado['Humedad']);
       console.log(hour);
-      agregarDatos(d.getDate(),parseInt(resultado['Temperatura']),parseInt(resultado['Humedad']));
+      agregarDatos(obtenerTiempoActual(),parseInt(resultado['Temperatura']),parseInt(resultado['Humedad']));
     });
-
-    var tiempo = []; // Array para almacenar los valores de tiempo
-    var temperatura = []; // Array para almacenar los valores de temperatura
-    var humedad = []; // Array para almacenar los valores de humedad
 
     var ctx = document.getElementById('grafica').getContext('2d');
     var grafica = new Chart(ctx, {
@@ -90,6 +87,11 @@
         }
       }
     });
+
+    function obtenerTiempoActual() {
+      var fecha = new Date();
+      return fecha.toISOString();
+    }
 
     // Función para agregar nuevos datos a la gráfica
     function agregarDatos(tiempoNuevo, temperaturaNuevo, humedadNuevo) {
