@@ -13,7 +13,7 @@
     // Función para realizar la solicitud AJAX
     function obtenerMensajeMQTT() {
       $.ajax({
-        url: '/temperatura',
+        url: '/mensaje-mqtt',
         method: 'GET',
         success: function(data) {
           actualizarTemp(data.mensaje);

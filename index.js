@@ -4,6 +4,7 @@ const mqtt = require('mqtt');
 const GPIO = require('rpi-gpio');
 const fs = require('fs');
 const ejs = require('ejs');
+const axios = require('axios');
 const port = 3000;
 
 const leerMQTT = require('./public/funciones/leerMQTT');
@@ -114,10 +115,9 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
             humedad = resultado['Humedad'];
             // sensacion_termica = temperatura + 0.348 * (humedad/100 * 6.105 * Math.pow(Math.E,(17.27*temperatura/(237.7+temperatura)))) - 4.25;
             // console.log(`Sensación térmica: ${sensacion_termica}`);
-            app.post('/temperatura', (req, res) => {
-                const mensaje = temperatura.toString(); 
-                res.json({ success: true }); 
-              });
+            const mensaje = temperatura.toString();
+
+            axios.post('http://localhost:3000/mensaje-mqtt',{mensaje});
         }
     })
 app.get('/datos', (req, res) => {
