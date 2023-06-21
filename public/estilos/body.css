@@ -105,5 +105,13 @@ p{
 }
 
 .display{
-    background-color: gray;
+    background-color: #d8ff3e61;
+    display: block;
+    padding: 10px;
+    width: 200px;
+    margin: 10px 0px 10px 0px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: system-ui;
+    font-size: x-large;
 }

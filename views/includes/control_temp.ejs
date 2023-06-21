@@ -1,6 +1,6 @@
 <div id = "div_control_temp">
-    <span class = "display" id = "temperatura_display"></span>
-    <span class = "display" id = "humedad_display"></span>
+    <span class = "display" id = "temperatura_display">Temperatura: </span>
+    <span class = "display" id = "humedad_display">Humedad: </span>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.2.7/mqtt.min.js"></script>
@@ -27,6 +27,22 @@
       resultado = JSON.parse(message);
       console.log(resultado);
       var mensaje = message.toString();
+        if(resultado['Temperatura'] <= 5)
+        {
+            $('#temperatura_display').css("background-color","#0015adb0");
+        }else
+        if(resultado['Temperatura'] > 5 && resultado['Temperatura'] < 18)
+        {
+            $('#temperatura_display').css("background-color","#0de5fbcf");
+        }else
+        if(resultado['Temperatura'] > 18 && resultado['Temperatura'] < 35)
+        {
+            $('#temperatura_display').css("background-color","#ff940ecf");
+        }else
+        if(resultado['Temperatura'] >= 35)
+        {
+            $('#temperatura_display').css("background-color","#e51d1dcf");
+        }
       actualizarTemp("Temperatura: " + resultado['Temperatura']);
       actualizarHum("Humedad: " + resultado['Humedad']);
     });
