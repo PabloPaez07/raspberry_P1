@@ -45,7 +45,7 @@ app.get('/aplicacion', (req, res) => {
     res.render('aplicacion.ejs', {
         root:__dirname,
         helper: leerMQTT,
-        client: client
+        cliente: client
     });
 })
 

@@ -1,9 +1,9 @@
 <html>
     <head>
-        <%= include('includes/dependencies.ejs') %>
+        <%- include('includes/dependencies.ejs') -%>
     </head>
-    <body>0
-        <%= include('includes/menu.ejs') %>
+    <body>
+        <%-include('includes/menu.ejs')-%>
         <div id="div_lista_aplicaciones">
             <button onclick="clickControlLuces()">Control de luces</button>
             <button onclick="clickControlTemp()">Control de temperatura</button>
@@ -11,8 +11,8 @@
             <button>Registros</button>
             <button>Dispositivos</button>
         </div>
-        <%= include('includes/control_luces.ejs') %>
-        <%= include('includes/control_temp.ejs') %>
+        <%- include('includes/control_luces.ejs') -%>
+        <%- include('includes/control_temp.ejs') -%>
     </body>
 </html>
 
