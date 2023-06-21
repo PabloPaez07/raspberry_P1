@@ -1,5 +1,6 @@
 <div id = "div_control_temp">
-    Temperatura:<p id = "temperatura_display"></p>
+    Temperatura:<span id = "temperatura_display"></span>
+    Humedad: <span id = "humedad_display"></span>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.2.7/mqtt.min.js"></script>
@@ -10,14 +11,24 @@
     function actualizarTemp(mensaje) {
       $('#temperatura_display').text(mensaje);
     }
+    function actualizarHum(mensaje){
+        $('#humedad_display').text(mensaje);
+    }
+
     var client = mqtt.connect('ws://broker.emqx.io:8083/mqtt');
+
     client.on('connect', function () {
       client.subscribe('habitacion/1');
     });
 
+    var resultado;
+
     client.on('message', function (topic, message) {
+      resultado = JSON.parse(message);
+      console.log(resultado);
       var mensaje = message.toString();
-      actualizarTemp(mensaje);
+      actualizarTemp(resultado['Temperatura']);
+      actualizarHum(resultado['Humedad']);
     });
 
   });
