@@ -2,6 +2,33 @@
     Temperatura:<p id = "temperatura_display"> <%= mensajeMQTT %></p>
 </div>
 <script src="jquery-3.6.4.min.js"></script>
+
 <script>
-    $('#temperatura_display').text(<%= mensajeMQTT %>)
+  $(document).ready(function() {
+    // Función para actualizar el contenido del span
+    function actualizarTemp(mensaje) {
+      $('#temperatura_display').text('Temperatura: ' + mensaje);
+    }
+
+    // Función para realizar la solicitud AJAX
+    function obtenerMensajeMQTT() {
+      $.ajax({
+        url: '/temperatura',
+        method: 'GET',
+        success: function(data) {
+          actualizarTemp(data.mensaje);
+        },
+        error: function(err) {
+          console.log('Error al obtener el mensaje MQTT:', err);
+        }
+      });
+    }
+
+    // Obtener el mensaje MQTT inicial al cargar la página
+    obtenerMensajeMQTT();
+
+    // Establecer un intervalo para actualizar el mensaje cada cierto tiempo (por ejemplo, cada 5 segundos)
+    setInterval(obtenerMensajeMQTT, 500);
+  });
+
 </script>
