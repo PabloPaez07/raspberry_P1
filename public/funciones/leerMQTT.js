@@ -1,18 +1,6 @@
 module.exports ={
     leerTemperatura()
     {
-        const mqtt = require('mqtt');
-        const clientId = 'emqx_nodejs_' + Math.random().toString(16).substring(2, 8);
-        const username = 'RaspberryPablo';
-        const password = 'anv64ahx';
-    
-        const client = mqtt.connect('ws://broker.emqx.io:8083/mqtt',{
-            clientId,
-            username,
-            password,
-            reconnectPeriod: 1000
-        });
-    
         client.on('connect', function()
         {
             console.log('conectado a broker mqtt');
