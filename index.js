@@ -33,8 +33,9 @@ app.get('/informacion', (req, res) => {
 
 app.get('/aplicacion', (req, res) => {
     res.render('aplicacion.ejs', {
-        root:__dirname
-    },{async: true});
+        root:__dirname,
+        helper: leerMQTT
+    });
 })
 
 app.get('/contacto', (req, res) => {
