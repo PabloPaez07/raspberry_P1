@@ -1,21 +1,6 @@
 module.exports ={
     leerTemperatura(client)
     {
-        client.on('connect', function()
-        {
-            console.log('conectado a broker mqtt');
-            client.subscribe('habitacion/1'), function (error)
-            {
-                if(error)
-                {
-                    console.log('error conectando a habitacion/1');
-                    return;
-                }else{
-                    client.publish('habitacion/1',"Hola: soy raspberryPi",0);
-                }
-            }
-        });
-    
         var resultado;
         var temperatura;
         var humedad;
