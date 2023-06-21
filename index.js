@@ -117,7 +117,13 @@ app.get('/aplicacion/luces/:num_boton/:estado', (req, res) => {
             // console.log(`Sensación térmica: ${sensacion_termica}`);
             const mensaje = temperatura.toString();
 
-            axios.post('http://localhost:3000/mensaje-mqtt',{mensaje});
+            axios.post('localhost:3000/mensaje-mqtt',{mensaje})
+            .then(response => {
+                console.log('Solicitud AJAX enviada con éxito');
+              })
+              .catch(error => {
+                console.log('Error al enviar la solicitud AJAX:', error);
+              });
         }
     })
 app.get('/datos', (req, res) => {
