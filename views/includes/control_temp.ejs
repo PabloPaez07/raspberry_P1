@@ -1,27 +1,24 @@
 <div id = "div_control_temp">
     Temperatura:<p id = "temperatura_display"></p>
 </div>
-<script src="jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
 <script>
   $(document).ready(function() {
-    // Función para actualizar el contenido del span
+
     function actualizarTemp(mensaje) {
       $('#temperatura_display').text(mensaje);
     }
     var client = mqtt.connect('ws://broker.emqx.io:8083/mqtt');
     client.on('connect', function () {
-      client.subscribe('habitacion/1'); // Reemplaza con el tema al que deseas suscribirte
+      client.subscribe('habitacion/1');
     });
 
-    // Manejar los mensajes MQTT recibidos
     client.on('message', function (topic, message) {
-      var mensaje = message.toString(); // Convertir el mensaje a una cadena
+      var mensaje = message.toString();
       actualizarTemp(mensaje);
     });
 
-    // Establecer un intervalo para actualizar el mensaje cada cierto tiempo (por ejemplo, cada 5 segundos)
-    setInterval(obtenerMensajeMQTT, 500);
   });
 
 </script>
