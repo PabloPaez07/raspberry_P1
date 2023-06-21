@@ -1,5 +1,5 @@
 module.exports ={
-    leerTemperatura()
+    leerTemperatura(client)
     {
         client.on('connect', function()
         {
