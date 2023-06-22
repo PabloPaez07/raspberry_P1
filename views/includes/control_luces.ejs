@@ -18,23 +18,17 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+
     function boton_habitacion_on(numero_habitacion) {
-      axios.get(`/aplicacion/luces/${numero_habitacion}/${1}`)
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.error(error);
-        });
+        enviar_pulsacion(numero_habitacion, 1);
     }
 
     function boton_habitacion_off(numero_habitacion) {
-      axios.get(`/aplicacion/luces/${numero_habitacion}/${0}`)
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.error(error);
-        });
+        enviar_pulsacion(numero_habitacion, 0);
+    }
+
+    enviar_pulsacion(numero_habitacion, estado)
+    {
+        axios.get(`/aplicacion/luces/${numHabitacion}/${estado}`)
     }
 </script>
