@@ -69,7 +69,7 @@ app.get('/contacto', (req, res) => {
     })
 })
 
-app.get('/aplicacion/luces/:num_habitacion/:estado', { timeout: 100 }, (req, res) => {
+app.get('/aplicacion/luces/:num_habitacion/:estado', (req, res) => {
     switch(req.params.num_habitacion)
     {
         case "1":
