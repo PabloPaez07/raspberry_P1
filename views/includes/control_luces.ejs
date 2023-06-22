@@ -20,18 +20,18 @@
         gpio.open({ pin: 22, direction: 'out' });
         gpio.open({ pin: 5, direction: 'out' });
         gpio.open({ pin: 6, direction: 'out' });
-
-
-        function boton_habitacion_on(numero_habitacion)
-        {
-            console.log(`Enciendo habitación ${numero_habitacion}`);
-            gpio.write(numero_habitacion,true);
-        }
-
-        function boton_habitacion_off(numero_habitacion)
-        {
-            console.log(`Apago habitación ${numero_habitacion}`);
-            gpio.write(numero_habitacion,false);
-        }
     });
+
+    function boton_habitacion_on(numero_habitacion)
+    {
+        console.log(`Enciendo habitación ${numero_habitacion}`);
+        gpio.write(numero_habitacion,true);
+    }
+
+    function boton_habitacion_off(numero_habitacion)
+    {
+        console.log(`Apago habitación ${numero_habitacion}`);
+        gpio.write(numero_habitacion,false);
+    }
+
 </script>
