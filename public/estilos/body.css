@@ -66,6 +66,7 @@ p{
     background: #ffee04;
     font-size: large;
     color: black;
+    cursor: pointer;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .boton_gpio_off
@@ -79,6 +80,7 @@ p{
     background: #e94301;
     font-size: large;
     color: white;
+    cursor: pointer;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 

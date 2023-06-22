@@ -16,7 +16,7 @@
 <script>
 
 function control_luces(num_habitacion, estado) {
-    axios.get(`/aplicacion/luces/${num_habitacion}/${estado}`,{ timeout: 100 })
+    axios.get(`/aplicacion/luces/${num_habitacion}/${estado}`,{ timeout: 20 })
       .then(response => {
         console.log('Petición enviada con éxito');
       })
