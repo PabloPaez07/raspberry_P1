@@ -70,7 +70,7 @@ app.get('/contacto', (req, res) => {
 })
 
 app.get('/aplicacion/luces/:num_habitacion/:estado', (req, res) => {
-    switch(req.params.num_boton)
+    switch(req.params.num_habitacion)
     {
         case "1":
             GPIO.output(17,(req.params.estado == "1"));
@@ -91,7 +91,7 @@ app.get('/aplicacion/luces/:num_habitacion/:estado', (req, res) => {
             return 0;
         break;
     }
-})
+});
 
 app.listen(port);
 console.log(`Server on port ${port}`);
