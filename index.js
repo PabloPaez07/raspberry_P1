@@ -69,16 +69,16 @@ app.get('/contacto', (req, res) => {
     })
 })
 
-app.get('/aplicacion/luces/:num_habitacion/:estado', (req, res) => {
+app.get('/aplicacion/luces/:num_habitacion/:estado', { timeout: 100 }, (req, res) => {
     switch(req.params.num_habitacion)
     {
         case "1":
             GPIO.output(17,(req.params.estado == "1"));
-            return 0;
+            res._destroy;
         break;
         case "2":
             GPIO.output(27,(req.params.estado == "1"));
-            return 0;
+            res._destroy;
         break;
         case "3":
             GPIO.output(22,(req.params.estado == "1"));
