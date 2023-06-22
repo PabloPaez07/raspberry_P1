@@ -19,16 +19,18 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
 
+    let numero_habitacion;
+
     function boton_habitacion_on(numero_habitacion) {
-        enviar_pulsacion(numero_habitacion, 1);
+        enviar_pulsacion(numero_habitacion, '1');
     }
 
     function boton_habitacion_off(numero_habitacion) {
-        enviar_pulsacion(numero_habitacion, 0);
+        enviar_pulsacion(numero_habitacion, '0');
     }
 
     function enviar_pulsacion(numero_habitacion, estado)
     {
-        axios.get(`/aplicacion/luces/${numHabitacion}/${estado}`)
+        axios.get(`/aplicacion/luces/${numero_habitacion}/${estado}`)
     }
 </script>
