@@ -4,34 +4,7 @@
     </head>
     <body>
         <%-include('includes/menu.ejs')-%>
-        <div id="div_lista_aplicaciones">
-            <button onclick="clickControlLuces()">Control de luces</button>
-            <button onclick="clickControlTemp()">Control de temperatura</button>
-            <button>Control de movimiento</button>
-            <button>Registros</button>
-            <button>Dispositivos</button>
-        </div>
         <%- include('includes/control_luces.ejs') -%>
         <%- include('includes/control_temp.ejs') -%>
     </body>
 </html>
-
-<script>
-    function clickControlLuces()
-    {
-        var div_control_luces = document.getElementById('div_control_luces');
-        var div_control_temp = document.getElementById('div_control_temp');
-
-        div_control_luces.style.display = 'block';
-        div_control_temp.style.display = 'none';
-    }
-
-    function clickControlTemp()
-    {
-        var div_control_luces = document.getElementById('div_control_luces');
-        var div_control_temp = document.getElementById('div_control_temp');
-
-        div_control_luces.style.display = 'none';
-        div_control_temp.style.display = 'block';
-    }
-</script>

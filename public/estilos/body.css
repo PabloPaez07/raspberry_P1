@@ -85,7 +85,7 @@ p{
 #div_control_luces
 {
     background: rgb(224, 223, 223);
-    display: none;
+    display: block;
     padding: 15px;
     margin-left: 3%;
     border: 1px solid black;
@@ -96,7 +96,7 @@ p{
 #div_control_temp
 {
     background: rgb(224, 223, 223);
-    display: none;
+    display: block;
     padding: 15px;
     margin-left: 3%;
     border: 1px solid black;
