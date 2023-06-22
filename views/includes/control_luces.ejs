@@ -19,7 +19,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     function boton_habitacion_on(numero_habitacion) {
-      axios.get(`/aplicacion/luces/${numero_habitacion}/1`)
+      axios.get(`/aplicacion/luces/${numero_habitacion}/${1}`)
         .then(response => {
           console.log(response.data);
         })
@@ -29,7 +29,7 @@
     }
 
     function boton_habitacion_off(numero_habitacion) {
-      axios.get(`/aplicacion/luces/${numero_habitacion}/0`)
+      axios.get(`/aplicacion/luces/${numero_habitacion}/${0}`)
         .then(response => {
           console.log(response.data);
         })
