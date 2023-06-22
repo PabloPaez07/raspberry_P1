@@ -27,7 +27,7 @@
         enviar_pulsacion(numero_habitacion, 0);
     }
 
-    enviar_pulsacion(numero_habitacion, estado)
+    function enviar_pulsacion(numero_habitacion, estado)
     {
         axios.get(`/aplicacion/luces/${numHabitacion}/${estado}`)
     }
