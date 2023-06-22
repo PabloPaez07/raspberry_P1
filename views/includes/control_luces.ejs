@@ -12,19 +12,29 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/gpio.js@2.0.0/dist/gpio.js"></script>
 <script>
-
     let gpio;
 
     function boton_habitacion_on(numero_habitacion) {
-        console.log(`Enciendo habitación ${numero_habitacion}`);
-        gpio.write(numero_habitacion, true);
+        if (gpio) {
+            console.log(`Enciendo habitación ${numero_habitacion}`);
+            gpio.write(numero_habitacion, true);
+        } else {
+            console.log("El objeto gpio no está inicializado.");
+        }
     }
 
     function boton_habitacion_off(numero_habitacion) {
-        console.log(`Apago habitación ${numero_habitacion}`);
-        gpio.write(numero_habitacion, false);
+        if (gpio) {
+            console.log(`Apago habitación ${numero_habitacion}`);
+            gpio.write(numero_habitacion, false);
+        } else {
+            console.log("El objeto gpio no está inicializado.");
+        }
     }
+
     document.addEventListener('DOMContentLoaded', () => {
+        gpio = new GPIO();
+
         gpio.open({ pin: 17, direction: 'out' });
         gpio.open({ pin: 27, direction: 'out' });
         gpio.open({ pin: 22, direction: 'out' });
