@@ -30,7 +30,7 @@
         });
     }
 
-    function boton_habitacion_on(numero_habitacion) {
+    function boton_habitacion_off(numero_habitacion) {
       axios.get(`/aplicacion/luces/${numero_habitacion}/0`)
         .then(response => {
           console.log(response.data);
@@ -49,5 +49,5 @@
         gpio.open({ pin: 5, direction: 'out' });
         gpio.open({ pin: 6, direction: 'out' });
     });
-    
+
 </script>
