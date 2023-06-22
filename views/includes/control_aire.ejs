@@ -1,0 +1,98 @@
+<div id = "div_control_aire">
+    <span class = "display" id = "CO_display">CO (Monóxido de carbono): </span>
+    <span class = "display" id = "Butano_display">Butano: </span>
+    <canvas id="grafica_aire"></canvas>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.2.7/mqtt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
+<script>
+  $(document).ready(function() {
+    var tiempo = []; 
+    var co = []; 
+    var butano = []; 
+
+    var client = mqtt.connect('ws://broker.emqx.io:8083/mqtt');
+
+    client.on('connect', function () {
+      client.subscribe('habitacion/1');
+    });
+
+    var resultado;
+
+    client.on('message', function (topic, message) 
+    {
+        resultado = JSON.parse(message);
+        var mensaje = message.toString();
+
+        actualizarCO("CO (Monóxido de carbono): " + resultado['CO']);
+
+        actualizarButano("Butano: " + resultado['Butano']);
+
+        agregarDatos(obtenerTiempoActual(),parseInt(resultado['CO']),parseInt(resultado['Butano']));
+
+    });
+
+    function actualizarCO(mensaje) {
+      $('#CO_display').text(mensaje);
+    }
+    
+    function actualizarButano(mensaje){
+        $('#Butano_display').text(mensaje);
+    }
+
+    var ctx = document.getElementById('grafica_aire').getContext('2d');
+    var grafica = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: tiempo,
+        datasets: [
+          {
+            label: 'CO',
+            data: temperatura,
+            borderColor: 'red',
+            fill: false
+          },
+          {
+            label: 'Butano',
+            data: humedad,
+            borderColor: 'blue',
+            fill: false
+          }
+        ]
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'time',
+            time: {
+              unit: 'minute'
+            }
+          },
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    function obtenerTiempoActual() {
+      var fecha = new Date();
+      return fecha.toISOString();
+    }
+
+    function agregarDatos(tiempo_actual, CO_actual, Butano_actual) {
+      tiempo.push(tiempo_actual);
+      co.push(CO_actual);
+      butano.push(Butano_actual);
+
+      grafica.update();
+    }
+
+  });
+
+</script>
