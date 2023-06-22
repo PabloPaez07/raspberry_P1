@@ -13,7 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gpio.js@2.0.0/dist/gpio.js"></script>
 <script>
 
-    const gpio = new GPIO();
+    let gpio;
 
     function boton_habitacion_on(numero_habitacion) {
         console.log(`Enciendo habitación ${numero_habitacion}`);
