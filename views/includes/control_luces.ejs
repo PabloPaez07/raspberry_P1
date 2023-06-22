@@ -12,24 +12,24 @@
 </div>
 
 <script>
-    const gpio = require('rpi-gpio');
+    <script src="https://cdn.jsdelivr.net/npm/gpio.js@2.0.0/dist/gpio.js"></script>
 
-    gpio.setMode('mode_bcm');
-    gpio.setup(17,'out');
-    gpio.setup(27,'out');
-    gpio.setup(22,'out');
-    gpio.setup(5,'out');
-    gpio.setup(6,'out');
+    gpio.open({ pin: 17, direction: 'out' });
+    gpio.open({ pin: 27, direction: 'out' });
+    gpio.open({ pin: 22, direction: 'out' });
+    gpio.open({ pin: 5, direction: 'out' });
+    gpio.open({ pin: 6, direction: 'out' });
+
 
     function boton_habitacion_on(numero_habitacion)
     {
         console.log(`Enciendo habitación ${numero_habitacion}`);
-        gpio.output(numero_habitacion,true);
+        gpio.write(numero_habitacion,true);
     }
 
     function boton_habitacion_off(numero_habitacion)
     {
         console.log(`Apago habitación ${numero_habitacion}`);
-        gpio.output(numero_habitacion,false);
+        gpio.write(numero_habitacion,false);
     }
 </script>
