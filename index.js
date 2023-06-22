@@ -74,18 +74,23 @@ app.get('/aplicacion/luces/:num_habitacion/:estado', (req, res) => {
     {
         case "1":
             GPIO.output(17,(req.params.estado == "1"));
+            return 0;
         break;
         case "2":
             GPIO.output(27,(req.params.estado == "1"));
+            return 0;
         break;
         case "3":
             GPIO.output(22,(req.params.estado == "1"));
+            return 0;
         break;
         case "4":
             GPIO.output(5,(req.params.estado == "1"));
+            return 0;
         break;
         case "5":
             GPIO.output(6,(req.params.estado == "1"));
+            return 0;
         break;
         default:
             return 0;
