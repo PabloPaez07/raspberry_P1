@@ -12,6 +12,8 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/gpio.js@2.0.0/dist/gpio.js"></script>
 <script>
+    const gpio = new GPIO();
+
     gpio.open({ pin: 17, direction: 'out' });
     gpio.open({ pin: 27, direction: 'out' });
     gpio.open({ pin: 22, direction: 'out' });
