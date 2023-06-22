@@ -28,20 +28,6 @@ const client = mqtt.connect('ws://broker.emqx.io:8083/mqtt',{
     password,
     reconnectPeriod: 1000
 });
-client.on('connect', function()
-{
-    console.log('conectado a broker mqtt');
-    client.subscribe('habitacion/1'), function (error)
-    {
-        if(error)
-        {
-            console.log('error conectando a habitacion/1');
-            return;
-        }else{
-            client.publish('habitacion/1',"Hola: soy raspberryPi",0);
-        }
-    }
-});
 
 app.get('/', (req, res) => {
     res.render('pagina_principal.ejs', {
@@ -74,11 +60,9 @@ app.get('/aplicacion/luces/:num_habitacion/:estado', (req, res) => {
     {
         case "1":
             GPIO.output(17,(req.params.estado == "1"));
-            res._destroy;
         break;
         case "2":
             GPIO.output(27,(req.params.estado == "1"));
-            res._destroy;
         break;
         case "3":
             GPIO.output(22,(req.params.estado == "1"));
