@@ -85,9 +85,10 @@ p{
 #div_control_luces
 {
     background: rgb(224, 223, 223);
-    display: block;
+    display: inline-table;
     padding: 15px;
-    margin-left: 3%;
+    margin-top: 3%;
+    margin-left: 5%;
     border: 1px solid black;
     border-radius: 5px;
     max-width: 440px;
@@ -96,9 +97,22 @@ p{
 #div_control_temp
 {
     background: rgb(224, 223, 223);
-    display: block;
+    display: inline-table;
     padding: 15px;
-    margin-left: 3%;
+    margin-top: 3%;
+    margin-left: 5%;
+    border: 1px solid black;
+    border-radius: 5px;
+    max-width: 440px;
+}
+
+#div_control_aire
+{
+    background: rgb(224, 223, 223);
+    display: inline-table;
+    padding: 15px;
+    margin-top: 3%;
+    margin-left: 5%;
     border: 1px solid black;
     border-radius: 5px;
     max-width: 440px;

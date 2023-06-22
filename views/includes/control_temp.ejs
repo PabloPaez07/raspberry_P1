@@ -3,6 +3,8 @@
     <span class = "display" id = "humedad_display">Humedad: </span>
     <canvas id="grafica"></canvas>
 </div>
+
+
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.2.7/mqtt.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -29,10 +31,12 @@
 
     var resultado;
 
-    client.on('message', function (topic, message) {
+    client.on('message', function (topic, message) 
+    {
       resultado = JSON.parse(message);
-      console.log(resultado);
+      //console.log(resultado);
       var mensaje = message.toString();
+
         if(resultado['Temperatura'] <= 5)
         {
             $('#temperatura_display').css("background-color","#0015adb0");
@@ -49,26 +53,30 @@
         {
             $('#temperatura_display').css("background-color","#e51d1dcf");
         }
-      actualizarTemp("Temperatura: " + resultado['Temperatura']);
-      actualizarHum("Humedad: " + resultado['Humedad']);
-      agregarDatos(obtenerTiempoActual(),parseInt(resultado['Temperatura']),parseInt(resultado['Humedad']));
+
+        actualizarTemp("Temperatura: " + resultado['Temperatura']);
+
+        actualizarHum("Humedad: " + resultado['Humedad']);
+
+        agregarDatos(obtenerTiempoActual(),parseInt(resultado['Temperatura']),parseInt(resultado['Humedad']));
+
     });
 
     var ctx = document.getElementById('grafica').getContext('2d');
     var grafica = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: tiempo, // Utiliza el array de tiempo como etiquetas del eje x
+        labels: tiempo,
         datasets: [
           {
             label: 'Temperatura',
-            data: temperatura, // Utiliza el array de temperatura como datos para el eje y
+            data: temperatura,
             borderColor: 'red',
             fill: false
           },
           {
             label: 'Humedad',
-            data: humedad, // Utiliza el array de humedad como datos para el eje y
+            data: humedad,
             borderColor: 'blue',
             fill: false
           }
@@ -79,7 +87,7 @@
           x: {
             type: 'time',
             time: {
-              unit: 'minute' // Puedes ajustar la unidad de tiempo según tus necesidades
+              unit: 'minute'
             }
           },
           y: {
@@ -94,13 +102,11 @@
       return fecha.toISOString();
     }
 
-    // Función para agregar nuevos datos a la gráfica
     function agregarDatos(tiempoNuevo, temperaturaNuevo, humedadNuevo) {
       tiempo.push(tiempoNuevo);
       temperatura.push(temperaturaNuevo);
       humedad.push(humedadNuevo);
 
-      // Actualizar la gráfica
       grafica.update();
     }
 
