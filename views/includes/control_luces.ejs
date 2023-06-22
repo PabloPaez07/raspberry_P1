@@ -1,12 +1,28 @@
 <div id="div_control_luces">
-    <a class="boton_gpio_on" href="/aplicacion/luces/1/1">Encender habitación 1</a>
-    <a class="boton_gpio_off" href="/aplicacion/luces/1/0">Apagar habitación 1</a>
-    <a class="boton_gpio_on" href="/aplicacion/luces/2/1">Encender habitación 2</a>
-    <a class="boton_gpio_off" href="/aplicacion/luces/2/0">Apagar habitación 2</a>
-    <a class="boton_gpio_on" href="/aplicacion/luces/3/1">Encender habitación 3</a>
-    <a class="boton_gpio_off" href="/aplicacion/luces/3/0">Apagar habitación 3</a>
-    <a class="boton_gpio_on" href="/aplicacion/luces/4/1">Encender habitación 4</a>
-    <a class="boton_gpio_off" href="/aplicacion/luces/4/0">Apagar habitación 4</a>
-    <a class="boton_gpio_on" href="/aplicacion/luces/5/1">Encender habitación 5</a>
-    <a class="boton_gpio_off" href="/aplicacion/luces/5/0">Apagar habitación 5</a>
+    <a class="boton_gpio_on" onclick="control_luces(1, 1)" >Encender habitación 1</a>
+    <a class="boton_gpio_off" onclick="control_luces(1, 0)">Apagar habitación 1</a>
+    <a class="boton_gpio_on" onclick="control_luces(2, 1)">Encender habitación 2</a>
+    <a class="boton_gpio_off" onclick="control_luces(2, 0)">Apagar habitación 2</a>
+    <a class="boton_gpio_on" onclick="control_luces(3, 1)">Encender habitación 3</a>
+    <a class="boton_gpio_off" onclick="control_luces(3, 0)">Apagar habitación 3</a>
+    <a class="boton_gpio_on" onclick="control_luces(4, 1)">Encender habitación 4</a>
+    <a class="boton_gpio_off" onclick="control_luces(4, 0)">Apagar habitación 4</a>
+    <a class="boton_gpio_on" onclick="control_luces(5, 1)">Encender habitación 5</a>
+    <a class="boton_gpio_off" onclick="control_luces(5, 0)">Apagar habitación 5</a>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+
+function control_luces(num_habitacion, estado) {
+    axios.get(`/aplicacion/luces/${num_habitacion}/${estado}`)
+      .then(response => {
+        console.log('Petición enviada con éxito');
+      })
+      .catch(error => {
+        console.error('Error al enviar la petición', error);
+      });
+  }
+
+</script>
