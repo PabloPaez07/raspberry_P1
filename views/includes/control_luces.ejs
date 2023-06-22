@@ -24,12 +24,12 @@
     function boton_habitacion_on(numero_habitacion)
     {
         console.log(`Enciendo habitación ${numero_habitacion}`);
-        GPIO.output(numero_habitacion,true);
+        gpio.output(numero_habitacion,true);
     }
 
     function boton_habitacion_off(numero_habitacion)
     {
         console.log(`Apago habitación ${numero_habitacion}`);
-        GPIO.output(numero_habitacion,false);
+        gpio.output(numero_habitacion,false);
     }
 </script>
