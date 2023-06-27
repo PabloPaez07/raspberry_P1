@@ -89,6 +89,7 @@ app.get('alarma/gases',(req, res)=>{
     setTimeout(function(){
         GPIO.output(16,false);
     }, 5000);
+    return 0;
 });
 
 app.listen(port);

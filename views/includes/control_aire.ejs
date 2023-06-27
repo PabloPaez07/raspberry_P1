@@ -2,6 +2,7 @@
     <span class = "display" id = "CO_display">CO (Monóxido de carbono): </span>
     <span class = "display" id = "Butano_display">Butano: </span>
     <canvas id="grafica_aire"></canvas>
+    <button class="boton_gpio_off" onclick = 'saltarAlarma()' >ALARMA</button>
 </div>
 
 
@@ -108,4 +109,14 @@
 
   });
 
+  function saltarAlarma()
+  {
+    axios.get('/alarma/gases',{timeout: 20 })
+          .then(response=>{
+              console.log('Alarma enviada con éxito');
+            })
+            .catch(error => {
+              console.error('Error al enviar la alarma', error);
+            });
+  }
 </script>
