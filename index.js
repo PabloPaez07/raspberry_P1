@@ -88,7 +88,7 @@ app.get('/alarma/gases',(req, res)=>{
     GPIO.output(16, true);
     setTimeout(function(){
         GPIO.output(16,false);
-    }, 5000);
+    }, 1000);
     return 0;
 });
 
