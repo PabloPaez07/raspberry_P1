@@ -7,9 +7,11 @@
 
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.2.7/mqtt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
+
 <script>
   $(document).ready(function() {
     var tiempo = []; 
@@ -28,12 +30,23 @@
     {
         resultado = JSON.parse(message);
         var mensaje = message.toString();
+        var butano_f = parseFloat(resultado['Butano']);
+        var co_f = parseFloat(resultado['CO']);
+        if(co_f >0.8 || butano_f >0.8)
+        {
+          axios.get('/alarma/gases',{timeout: 20 })
+          .then(response=>{
+              console.log('Alarma enviada con éxito');
+            })
+            .catch(error => {
+              console.error('Error al enviar la alarma', error);
+            });
+        }
 
-        actualizarCO("CO (Monóxido de carbono): " + resultado['CO']);
+        actualizarCO("CO (Monóxido de carbono): " + butano_f);
+        actualizarButano("Butano: " + co_f);
 
-        actualizarButano("Butano: " + resultado['Butano']);
-
-        agregarDatos(obtenerTiempoActual(),parseFloat(resultado['CO']),parseFloat(resultado['Butano']));
+        agregarDatos(obtenerTiempoActual(),co_f,butano_f);
 
     });
 

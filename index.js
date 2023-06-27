@@ -17,6 +17,7 @@ GPIO.setup(27,'out');
 GPIO.setup(22,'out');
 GPIO.setup(5,'out');
 GPIO.setup(6,'out');
+GPIO.setup(16, 'out');
 
 const clientId = 'emqx_nodejs_' + Math.random().toString(16).substring(2, 8);
 const username = 'RaspberryPablo';
@@ -80,6 +81,10 @@ app.get('/aplicacion/luces/:num_habitacion/:estado', (req, res) => {
             return 0;
         break;
     }
+});
+
+app.get('alarma/gases',(req, res)=>{
+    GPIO.output()
 });
 
 app.listen(port);
