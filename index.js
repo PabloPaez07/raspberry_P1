@@ -83,7 +83,7 @@ app.get('/aplicacion/luces/:num_habitacion/:estado', (req, res) => {
     }
 });
 
-app.get('alarma/gases',(req, res)=>{
+app.get('/alarma/gases',(req, res)=>{
     console.log('Alarma gases');
     GPIO.output(16, true);
     setTimeout(function(){
