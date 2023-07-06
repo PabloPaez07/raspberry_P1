@@ -6,8 +6,6 @@ const fs = require('fs');
 const ejs = require('ejs');
 const port = 3000;
 
-const leerMQTT = require('./public/funciones/leerMQTT');
-
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
@@ -45,7 +43,6 @@ app.get('/informacion', (req, res) => {
 app.get('/aplicacion', (req, res) => {
     res.render('aplicacion.ejs', {
         root:__dirname,
-        helper: leerMQTT,
         cliente: client
     });
 })
