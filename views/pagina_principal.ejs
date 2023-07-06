@@ -7,9 +7,29 @@
         <div id="div_introduccion">
             <h1>Introducción</h1>
             <p>
-                Esta aplicación web se utiliza para administrar la domótica de una vivienda. En la
-                sección de (Aplicación) se puede acceder a las distintas funcionalidades, por ejemplo,
-                representación en tiempo real de los sensores, control de parámetros, etc.
+                En este trabajo de fin de grado se ha propuesto desarrollar un sistema domótico
+                enfocado al uso en viviendas convencionales. 
+
+                   El sistema está compuesto por varios dispositivos microcontroladores modelo
+                ESP32, los cuales, con el uso del protocolo de transmisión de mensajes MQTT
+                (Message Queuing Telemetry Transport), estarán conectados a un bróker con la
+                finalidad de transmitir información, a diferentes “topics”, que nuestro
+                servidor central recogerá. Este servidor está alojado en una Raspberry Pi 4
+                modelo B, se trata de un servidor de NodeJs, muy utilizado en este tipo de
+                aplicaciones tecnológicas, el cual, podrá manejar la información transmitida por
+                los microcontroladores y realizar funciones específicas para hacer la vivienda 
+                más segura y cómoda. Se podrá acceder a una aplicación web, con un dispositivo 
+                que disponga de navegador web, con el propósito de poder controlar los diferentes 
+                parámetros de la vivienda, además de visualizar la información recibida por los 
+                sensores en tiempo real.
+                
+                   El objetivo principal de este trabajo es poder aportar a las personas seguridad 
+                en sus hogares y facilitarles el control de los dispositivos electrónicos, como 
+                podrían ser lavadoras, calentadores de agua, vitrocerámicas, etc. Además, aportar 
+                a los interesados en este ámbito la suficiente información para que, de manera 
+                autónoma, puedan instalar un sistema propio para sus viviendas y así contribuir 
+                al desarrollo de la tecnología.
+
             </p>
         </div>
 <!-- ........................................................................................ -->
