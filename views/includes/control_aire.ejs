@@ -30,8 +30,8 @@
     {
         var resultado = JSON.parse(message);
         var mensaje = message.toString();
-        var butano_f = parseFloat(resultado['Butano']);
-        var co_f = parseFloat(resultado['CO']);
+        var butano_f = parseFloat(resultado['Butano']).toFixed(2);
+        var co_f = parseFloat(resultado['CO']).toFixed(2);
         if(co_f >0.8 || butano_f >0.8)
         {
           axios.get('/alarma/gases',{timeout: 20 })
@@ -42,7 +42,6 @@
               console.error('Error al enviar la alarma', error);
             });
         }
-        console.log(co_f, butano_f);
 
         $('#CO_display_1').text("Monóxido de carbono: " + butano_f);
         $('#Butano_display').text("Butano: " + co_f);
