@@ -1,6 +1,6 @@
 <div id = "div_control_aire">
     Cocina
-    <span class = "display" id = "CO_display/1">CO (Monóxido de carbono): </span>
+    <span class = "display" id = "CO_display/1">Monóxido de carbono: </span>
     <span class = "display" id = "Butano_display">Butano: </span>
     <canvas id="grafica_aire"></canvas>
     <button class="boton_gpio_off" onclick = 'saltarAlarma()' >ALARMA</button>
@@ -44,7 +44,7 @@
         }
         console.log(co_f, butano_f);
 
-        $('#CO_display').text("CO (Monóxido de carbono): " + butano_f);
+        $('#CO_display/1').text("Monóxido de carbono: " + butano_f);
         $('#Butano_display').text("Butano: " + co_f);
 
         agregarDatos(obtenerTiempoActual(),co_f,butano_f);
