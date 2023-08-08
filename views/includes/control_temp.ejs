@@ -55,9 +55,9 @@
             $('#temperatura_display').css("background-color","#e51d1dcf");
         }
 
-        actualizarTemp("Temperatura: " + resultado['Temperatura'].toFixed(2));
+        actualizarTemp("Temperatura: " + resultado['Temperatura'].toFixed(2)+ " °C");
 
-        actualizarHum("Humedad: " + resultado['Humedad'].toFixed(2));
+        actualizarHum("Humedad: " + resultado['Humedad'].toFixed(2)+ "%");
 
         agregarDatos(obtenerTiempoActual(),parseInt(resultado['Temperatura'].toFixed(2)),parseInt(resultado['Humedad'].toFixed(2)));
 
