@@ -70,6 +70,7 @@ p{
 
 #div_pagina
 {
+    text-align: center;
     width: 100%;
 }
 
@@ -79,7 +80,8 @@ p{
     background: rgb(224, 223, 223);
     display: inline-table;
     padding: 15px;
-    margin: auto;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-top: 100px;
     border: 2px solid black;
     border-radius: 5px;
@@ -93,7 +95,8 @@ p{
     background: rgb(224, 223, 223);
     display: inline-table;
     padding: 15px;
-    margin: auto;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-top: 100px;
     border: 2px solid black;
     border-radius: 5px;
@@ -107,7 +110,8 @@ p{
     background: rgb(224, 223, 223);
     display: inline-table;
     padding: 15px;
-    margin: auto;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-top: 100px;
     border: 2px solid black;
     border-radius: 5px;
