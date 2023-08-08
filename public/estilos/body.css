@@ -114,7 +114,9 @@ p{
     display: block;
     padding: 10px;
     width: 200px;
-    margin: 10px 0px 10px 0px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     border: 2px solid black;
     border-radius: 5px;
     font-family: math;
