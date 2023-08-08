@@ -68,6 +68,11 @@ p{
     background-color: #a7e663;
 }
 
+#div_pagina
+{
+    width: 100%;
+}
+
 #div_control_luces
 {
     text-align: center;
