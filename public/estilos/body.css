@@ -27,7 +27,7 @@ p{
     margin-top: 5%;
     padding: 5px;
     background-color: rgba(0, 0, 0, 0.198);
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 4px;
     max-width: 1000px;
 }
@@ -38,7 +38,7 @@ p{
     margin-top: 5%;
     padding: 5px;
     background-color: rgba(0, 0, 0, 0.198);
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 4px;
     max-width: 1000px;
 }
@@ -50,7 +50,7 @@ p{
     margin-bottom: 5%;
     padding: 5px;
     background-color: rgba(0, 0, 0, 0.198);
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 4px;
     max-width: 200px;
 }
@@ -69,12 +69,13 @@ p{
 
 #div_control_luces
 {
+    text-align: center;
     background: rgb(224, 223, 223);
     display: inline-table;
     padding: 15px;
     margin-top: 100px;
     margin-left: 100px;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
     max-width: 440px;
     font-family: math;
@@ -82,12 +83,13 @@ p{
 
 #div_control_temp
 {
+    text-align: center;
     background: rgb(224, 223, 223);
     display: inline-table;
     padding: 15px;
     margin-top: 100px;
     margin-left: 100px;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
     max-width: 440px;
     font-family: math;
@@ -95,12 +97,13 @@ p{
 
 #div_control_aire
 {
+    text-align: center;
     background: rgb(224, 223, 223);
     display: inline-table;
     padding: 15px;
     margin-top: 100px;
     margin-left: 100px;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
     max-width: 440px;
     font-family: math;
@@ -112,7 +115,7 @@ p{
     padding: 10px;
     width: 200px;
     margin: 10px 0px 10px 0px;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
     font-family: math;
     font-size: large;
