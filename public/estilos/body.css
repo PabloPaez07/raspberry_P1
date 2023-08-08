@@ -55,33 +55,16 @@ p{
     max-width: 200px;
 }
 
-.boton_gpio_on
+.boton_luz
 {
     display: inline-block;
-    text-decoration: none;
     padding: 5px;
     margin: 2%;
     border: 1px solid black;
     border-radius: 3px;
-    background: #ffee04;
-    font-size: large;
-    color: black;
-    cursor: pointer;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-.boton_gpio_off
-{
-    display: inline-block;
-    text-decoration: none;
-    padding: 5px;
-    margin: 2%;
-    border: 1px solid black;
-    border-radius: 3px;
-    background: #e94301;
-    font-size: large;
-    color: white;
-    cursor: pointer;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 100px;
+    height: 100px;
+    background: #f2f2f2;
 }
 
 #div_control_luces
