@@ -77,7 +77,7 @@ p{
     border: 1px solid black;
     border-radius: 5px;
     max-width: 440px;
-    font-family: fantasy;
+    font-family: math;
 }
 
 #div_control_temp
@@ -90,7 +90,7 @@ p{
     border: 1px solid black;
     border-radius: 5px;
     max-width: 440px;
-    font-family: fantasy;
+    font-family: math;
 }
 
 #div_control_aire
@@ -103,7 +103,7 @@ p{
     border: 1px solid black;
     border-radius: 5px;
     max-width: 440px;
-    font-family: fantasy;
+    font-family: math;
 }
 
 .display{
@@ -114,6 +114,6 @@ p{
     margin: 10px 0px 10px 0px;
     border: 1px solid black;
     border-radius: 5px;
-    font-family: system-ui;
+    font-family: math;
     font-size: large;
 }
