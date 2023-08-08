@@ -26,11 +26,9 @@
       client.subscribe('cocina');
     });
 
-    var resultado;
-
     client.on('message', function (topic, message) 
     {
-        resultado = JSON.parse(message);
+        var resultado = JSON.parse(message);
         var mensaje = message.toString();
         var butano_f = parseFloat(resultado['Butano']);
         var co_f = parseFloat(resultado['CO']);
@@ -45,23 +43,16 @@
             });
         }
         console.log(co_f, butano_f);
-        
-        actualizarCO("CO (Monóxido de carbono): " + butano_f);
-        actualizarButano("Butano: " + co_f);
+
+        $('#CO_display').text("CO (Monóxido de carbono): " + butano_f);
+        $('#Butano_display').text("Butano: " + co_f);
 
         agregarDatos(obtenerTiempoActual(),co_f,butano_f);
 
     });
 
-    function actualizarCO(mensaje) {
-      $('#CO_display').text(mensaje);
-    }
-
-    function actualizarButano(mensaje){
-        $('#Butano_display').text(mensaje);
-    }
-
     var ctx = document.getElementById('grafica_aire').getContext('2d');
+
     var grafica = new Chart(ctx, {
       type: 'line',
       data: {
