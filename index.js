@@ -60,7 +60,7 @@ app.get('/aplicacion/luces/:num_habitacion', (req, res) => {
     {
         console.log('enciendo habitacion: ',gpios_luz[req.params.num_habitacion]);
         estados[req.params.num_habitacion] = 1;
-        GPIO.output(gpios_luz[num_habitacion],true);
+        GPIO.output(gpios_luz[req.params.num_habitacion],true);
     }
     else
     {
