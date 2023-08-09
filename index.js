@@ -53,30 +53,18 @@ app.get('/contacto', (req, res) => {
     })
 })
 
-app.get('/aplicacion/luces/:num_habitacion/:estado', (req, res) => {
-    switch(req.params.num_habitacion)
+var estados = [0,0,0,0,0];
+var gpios_luz = [17, 27, 22, 5, 6];
+app.get('/aplicacion/luces/:num_habitacion', (req, res) => {
+    if(estados[num_habitacion] === 0)
     {
-        case "1":
-            GPIO.output(17,(req.params.estado == "1"));
-        break;
-        case "2":
-            GPIO.output(27,(req.params.estado == "1"));
-        break;
-        case "3":
-            GPIO.output(22,(req.params.estado == "1"));
-            return 0;
-        break;
-        case "4":
-            GPIO.output(5,(req.params.estado == "1"));
-            return 0;
-        break;
-        case "5":
-            GPIO.output(6,(req.params.estado == "1"));
-            return 0;
-        break;
-        default:
-            return 0;
-        break;
+        estados[num_habitacion] = 1;
+        GPIO.output(gpios_luz[num_habitacion],true);
+    }
+    else
+    {
+        estados[num_habitacion] = 0;
+        GPIO.output(gpios_luz[num_habitacion],false);
     }
 });
 

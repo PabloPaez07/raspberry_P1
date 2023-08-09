@@ -16,24 +16,7 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
 <script>
-
-  var estados_luces = [0, 0, 0, 0, 0]
-
   function control_luces(num_habitacion) {
-      conmutar(num_habitacion);
-      axios.get(`/aplicacion/luces/${num_habitacion}/${estados_luces[num_habitacion]}`,{ timeout: 20 });
+      axios.get(`/aplicacion/luces/${num_habitacion}`,{ timeout: 20 });
   };
-  
-  function conmutar(num_habitacion)
-  {
-    if(estados_luces[num_habitacion]===0)
-    {
-      estados_luces[num_habitacion] = 1;
-      $('#boton_'+num_habitacion).css('background', 'green');
-    }else{
-      estados_luces[num_habitacion] = 0;
-      $('#boton_'+num_habitacion).css('background', 'white');
-    }
-  }
-
 </script>
