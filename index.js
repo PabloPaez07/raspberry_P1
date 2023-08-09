@@ -58,13 +58,11 @@ var gpios_luz = [17, 27, 22, 5, 6];
 app.get('/aplicacion/luces/:num_habitacion', (req, res) => {
     if(estados[req.params.num_habitacion] === 0)
     {
-        console.log('enciendo habitacion: ',gpios_luz[req.params.num_habitacion]);
         estados[req.params.num_habitacion] = 1;
         GPIO.output(gpios_luz[req.params.num_habitacion],true);
     }
     else
     {
-        console.log('apago habitacion: ',gpios_luz[req.params.num_habitacion]);
         estados[req.params.num_habitacion] = 0;
         GPIO.output(gpios_luz[req.params.num_habitacion],false);
     }
