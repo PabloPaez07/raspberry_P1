@@ -17,13 +17,6 @@
     var temperatura = []; // Array para almacenar los valores de temperatura
     var humedad = []; // Array para almacenar los valores de humedad
 
-    function actualizarTemp(mensaje) {
-      $('#temperatura_display').text(mensaje);
-    }
-    function actualizarHum(mensaje){
-        $('#humedad_display').text(mensaje);
-    }
-
     var client = mqtt.connect('ws://broker.emqx.io:8083/mqtt');
 
     client.on('connect', function () {
@@ -55,9 +48,9 @@
             $('#temperatura_display').css("background-color","#e51d1dcf");
         }
 
-        actualizarTemp("Temperatura: " + resultado['Temperatura'].toFixed(2)+ " °C");
+        $('#temperatura_display').text("Temperatura: " + resultado['Temperatura'].toFixed(2)+ " °C");
 
-        actualizarHum("Humedad: " + resultado['Humedad'].toFixed(2)+ "%");
+        $('#humedad_display').text("Humedad: " + resultado['Humedad'].toFixed(2)+ "%");
 
         agregarDatos(obtenerTiempoActual(),parseInt(resultado['Temperatura'].toFixed(2)),parseInt(resultado['Humedad'].toFixed(2)));
 

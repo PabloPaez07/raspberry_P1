@@ -28,26 +28,24 @@
 
     client.on('message', function (topic, message) 
     {
-        var resultado = JSON.parse(message);
-        var mensaje = message.toString();
-        var butano_f = parseFloat(resultado['Butano']).toFixed(2);
-        var co_f = parseFloat(resultado['CO']).toFixed(2);
+        var datos_recibidos = JSON.parse(message);
+        var butano_f = parseFloat(datos_recibidos['Butano']).toFixed(2);
+        var co_f = parseFloat(datos_recibidos['CO']).toFixed(2);
+        var fecha = new Date();
+
         if(co_f >0.8 || butano_f >0.8)
         {
-          axios.get('/alarma/gases',{timeout: 20 })
-          .then(response=>{
-              console.log('Alarma enviada con éxito');
-            })
-            .catch(error => {
-              console.error('Error al enviar la alarma', error);
-            });
+          saltarAlarma();
         }
 
         $('#CO_display_1').text("Monóxido de carbono: " + butano_f);
         $('#Butano_display').text("Butano: " + co_f);
 
-        agregarDatos(obtenerTiempoActual(),co_f,butano_f);
+        tiempo.push(fecha.toISOString());
+        co.push(co_f);
+        butano.push(butano_f);
 
+        grafica.update();
     });
 
     var ctx = document.getElementById('grafica_aire').getContext('2d');
@@ -89,30 +87,10 @@
         }
       }
     });
-
-    function obtenerTiempoActual() {
-      var fecha = new Date();
-      return fecha.toISOString();
-    }
-
-    function agregarDatos(tiempo_actual, CO_actual, Butano_actual) {
-      tiempo.push(tiempo_actual);
-      co.push(CO_actual);
-      butano.push(Butano_actual);
-
-      grafica.update();
-    }
-
   });
 
   function saltarAlarma()
   {
-    axios.get('/alarma/gases',{timeout: 20 })
-          .then(response=>{
-              console.log('Alarma enviada con éxito');
-            })
-            .catch(error => {
-              console.error('Error al enviar la alarma', error);
-            });
+    axios.get('/alarma/gases',{timeout: 20 });
   }
 </script>
