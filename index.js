@@ -4,6 +4,7 @@
     const GPIO = require('rpi-gpio');
     const fs = require('fs');
     const ejs = require('ejs');
+const { json } = require('body-parser');
 
 // ---------------- inicialización del framework express ----------------------
     const app = express();
@@ -92,7 +93,7 @@
         setTimeout(function(){
             GPIO.output(16,false);
         }, 500);
-        return 0;
+        return json();
     });
 
     //ejecución del programa
