@@ -34,10 +34,6 @@
         var butano_f = parseFloat(datos_recibidos['Butano']).toFixed(2);
         var co_f = parseFloat(datos_recibidos['CO']).toFixed(2);
         var fecha = new Date();
-        console.log('############');
-        console.log(butano_f);
-        console.log('-----------')
-        console.log(co_f);
         if(co_f >0.7 || butano_f >0.7)
         {
           console.log('alarma');
