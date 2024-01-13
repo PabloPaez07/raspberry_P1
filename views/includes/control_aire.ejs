@@ -93,6 +93,7 @@
 
   function saltarAlarma()
   {
-    axios.get('/alarma/gases');
+    console.log('alarma');
+    axios.get('/alarma/gases',{timeout: 50 });
   }
 </script>
