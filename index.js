@@ -89,15 +89,9 @@
     //enlace para activar la alarma
     app.get('/alarma/gases',(req, res)=>{
         console.log('Alarma gases');
-        var cont = 0;
-        while(cont < 3)
-        {
-            GPIO.output(16, true);
-            setTimeout(function(){
-                GPIO.output(16,false); 
-                cont++;
-            }, 500); 
-        }
+        setTimeout(function(){
+            GPIO.output(16,false); 
+        }, 500); 
         return 0;
     });
 
