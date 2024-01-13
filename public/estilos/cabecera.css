@@ -19,6 +19,7 @@ body{
     margin-top: 35px;
     width: 200px;
     border-radius: 60px;
+    background-color: white;
 }
 #div_enlaces{
     display: inline;
