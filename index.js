@@ -94,9 +94,9 @@
         {
             GPIO.output(16, true);
             setTimeout(function(){
-                GPIO.output(16,false);
-            }, 500);     
-            cont++;
+                GPIO.output(16,false); 
+                cont++;
+            }, 500); 
         }
         return 0;
     });
