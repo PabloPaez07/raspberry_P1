@@ -91,7 +91,7 @@
         console.log('Alarma gases');
         setTimeout(function(){
             GPIO.output(16,false); 
-        }, 500); 
+        }, 200); 
         return 0;
     });
 
