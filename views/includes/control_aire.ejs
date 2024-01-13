@@ -34,14 +34,18 @@
         var butano_f = parseFloat(datos_recibidos['Butano']).toFixed(2);
         var co_f = parseFloat(datos_recibidos['CO']).toFixed(2);
         var fecha = new Date();
-
-        if(co_f >0.8 || butano_f >0.8)
+        console.log('############');
+        console.log(butano_f);
+        console.log('-----------')
+        console.log(co_f);
+        if(co_f >0.7 || butano_f >0.7)
         {
+          console.log('alarma');
           saltarAlarma();
         }
 
-        $('#CO_display_1').text("Monóxido de carbono: " + butano_f);
-        $('#Butano_display').text("Butano: " + co_f);
+        $('#CO_display_1').text("Monóxido de carbono: " + co_f);
+        $('#Butano_display').text("Butano: " + butano_f);
 
         tiempo.push(fecha.toISOString());
         co.push(co_f);
