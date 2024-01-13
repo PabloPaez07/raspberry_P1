@@ -89,11 +89,22 @@ const { json } = require('body-parser');
 
     //enlace para activar la alarma
     app.get('/alarma/gases',(req, res)=>{
-        GPIO.output(16, true);
-        setTimeout(function(){
-            GPIO.output(16,false);
-        }, 500);
-        return json();
+        try {
+            // Activar el pin
+            GPIO.output(16, true);
+    
+            // Mantener el pin activo durante 500 ms
+            setTimeout(() => {
+                // Desactivar el pin después de 500 ms
+                GPIO.output(16, false);
+    
+                // Enviar respuesta JSON después de desactivar el pin
+                res.json({ status: 'success', message: 'Alarma activada por gases' });
+            }, 500);
+        } catch (error) {
+            console.error('Error al activar la alarma:', error);
+            res.status(500).json({ status: 'error', message: 'Error al activar la alarma' });
+        }
     });
 
     //ejecución del programa
