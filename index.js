@@ -119,19 +119,22 @@
         }
     });*/
 
-    let estado_encendida = true;
+    let estado_encendida = true; // La Raspberry Pi comienza encendida
+    let ultima_activacion = 0; // Variable para almacenar el tiempo de la última activación
+    
     GPIO.on('change', (channel, value) => {
-        if (channel === pinBoton) {
-            if (!estado_encendida) {
-                    GPIO.output(17,true);
-                    console.log(value);
-                    //exec('sudo reboot');
-            } else {
-                GPIO.output(17,false);
-                console.log(value);
-                //exec('sudo poweroff');
+        if (channel === 26) {
+            const tiempo_actual = Date.now();
+            if (tiempoActual - ultima_activacion < 200) {
+                return;
             }
-            estado_encendida = !estado_encendida;
+            ultima_activacion = tiempo_actual;
+            if (estado_encendida) {
+                GPIO.output(17, false); // Apaga la Raspberry Pi
+            } else {
+                GPIO.output(17, true); // Enciende la Raspberry Pi
+            }
+            estado_encendida = !estado_encendida; // Invierte el estado
         }
     });
 
