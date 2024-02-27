@@ -125,7 +125,7 @@
         console.log('entro');
         if (channel === 24) {
             const tiempo_actual = Date.now();
-            if (tiempoActual - ultima_activacion < 200) {
+            if (tiempo_actual - ultima_activacion < 200) {
                 return;
             }
             ultima_activacion = tiempo_actual;
