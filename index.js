@@ -132,9 +132,16 @@
             if (estado_encendida) {
                 console.log('apago raspberryPi');
                 GPIO.output(17, false); // Apaga la Raspberry Pi
+                res.render('aplicacion.ejs', {
+                    root:__dirname,
+                    cliente: client
+                });
             } else {
                 console.log('enciendo raspberryPi');
                 GPIO.output(17, true); // Enciende la Raspberry Pi
+                res.render('contacto.ejs', {
+                    root:__dirname
+                })
             }
             estado_encendida = !estado_encendida; // Invierte el estado
         }
