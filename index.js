@@ -35,6 +35,7 @@
 // ---------------- Configuración de puertos GPIO -------------------------------
 // este pin se utiliza para apagar la raspberryPi
     const pinBoton = 26;
+    const tiempo_para_encender = 3000;
     GPIO.setup(pinBoton, GPIO.DIR_IN, GPIO.EDGE_BOTH);
 // estos puertos se utilizarán para el control de los relés que encienden y apagan las bombillas
     GPIO.setup(17,'out');
@@ -112,9 +113,23 @@
     });
 
     //Evento de apagado de la raspberryPi
-    GPIO.on('change', (channel, value) => {
+    /*GPIO.on('change', (channel, value) => {
         if (channel === pinBoton && value === false) {
             exec('sudo poweroff');
+        }
+    });*/
+
+    let temporizador;
+    GPIO.on('change', (channel, value) => {
+        if (channel === pinBoton) {
+            if (value === false) {
+                temporizador = setTimeout(() => {
+                    exec('sudo reboot');
+                }, tiempo_para_encender);
+            } else {
+                exec('sudo poweroff');
+                clearTimeout(temporizador);
+            }
         }
     });
 
