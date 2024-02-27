@@ -121,6 +121,8 @@
     let ultima_activacion = 0; // Variable para almacenar el tiempo de la última activación
     
     GPIO.on('change', (channel, value) => {
+        
+        console.log('entro');
         if (channel === 26) {
             const tiempo_actual = Date.now();
             if (tiempoActual - ultima_activacion < 200) {
