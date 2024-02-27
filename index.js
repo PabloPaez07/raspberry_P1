@@ -124,10 +124,14 @@
         if (channel === pinBoton) {
             if (value === false) {
                 temporizador = setTimeout(() => {
-                    exec('sudo reboot');
+                    GPIO.output(17,true);
+                    console.log(value);
+                    //exec('sudo reboot');
                 }, tiempo_para_encender);
             } else {
-                exec('sudo poweroff');
+                GPIO.output(17,false);
+                console.log(value);
+                //exec('sudo poweroff');
                 clearTimeout(temporizador);
             }
         }
