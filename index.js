@@ -132,7 +132,6 @@
                 GPIO.output(17,false);
                 console.log(value);
                 //exec('sudo poweroff');
-                clearTimeout(temporizador);
             }
         }
     });
