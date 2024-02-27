@@ -119,20 +119,19 @@
         }
     });*/
 
-    let temporizador;
+    let estado_encendida = true;
     GPIO.on('change', (channel, value) => {
         if (channel === pinBoton) {
-            if (value === false) {
-                temporizador = setTimeout(() => {
+            if (!estado_encendida) {
                     GPIO.output(17,true);
                     console.log(value);
                     //exec('sudo reboot');
-                }, tiempo_para_encender);
             } else {
                 GPIO.output(17,false);
                 console.log(value);
                 //exec('sudo poweroff');
             }
+            estado_encendida = !estado_encendida;
         }
     });
 
