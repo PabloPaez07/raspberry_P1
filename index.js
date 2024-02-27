@@ -4,7 +4,8 @@
     const GPIO = require('rpi-gpio');
     const fs = require('fs');
     const ejs = require('ejs');
-const { json } = require('body-parser');
+    const { exec } = require('child_process');
+    const { json } = require('body-parser');
 
 // ---------------- inicialización del framework express ----------------------
     const app = express();
@@ -32,6 +33,9 @@ const { json } = require('body-parser');
     GPIO.setMode('mode_bcm');
     
 // ---------------- Configuración de puertos GPIO -------------------------------
+// este pin se utiliza para apagar la raspberryPi
+    const pinBoton = 26;
+    GPIO.setup(pinBoton, GPIO.DIR_IN, GPIO.EDGE_BOTH);
 // estos puertos se utilizarán para el control de los relés que encienden y apagan las bombillas
     GPIO.setup(17,'out');
     GPIO.setup(27,'out');
@@ -104,6 +108,13 @@ const { json } = require('body-parser');
         } catch (error) {
             console.error('Error al activar la alarma:', error);
             res.status(500).json({ status: 'error', message: 'Error al activar la alarma' });
+        }
+    });
+
+    //Evento de apagado de la raspberryPi
+    GPIO.on('change', (channel, value) => {
+        if (channel === pinBoton && value === false) {
+            exec('sudo poweroff');
         }
     });
 
