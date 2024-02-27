@@ -128,8 +128,10 @@
             }
             ultima_activacion = tiempo_actual;
             if (estado_encendida) {
+                console.log('apago raspberryPi');
                 GPIO.output(17, false); // Apaga la Raspberry Pi
             } else {
+                console.log('enciendo raspberryPi');
                 GPIO.output(17, true); // Enciende la Raspberry Pi
             }
             estado_encendida = !estado_encendida; // Invierte el estado
