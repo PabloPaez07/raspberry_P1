@@ -2,8 +2,8 @@
     <h2><strong>Gases de la cocina</strong></h2>
   
     <img style="height: 80px;" src="imagenes/gas-natural.png">
-    <span class = "display" id = "Butano_display">Monóxido de carbono: </span>
-    <span class = "display" id = "CO_display_1">Butanoooo: </span>
+    <span class = "display" id = "CO_display_1">Monóxido de carbono: </span>
+    <span class = "display" id = "Butano_display">Butano: </span>
     <canvas id="grafica_aire"></canvas>
     <button class ="boton_alarma" onclick = 'saltarAlarma()' >ALARMA</button>
 </div>
@@ -40,8 +40,8 @@
           saltarAlarma();
         }
 
-        $('#CO_display_1').text("Monóxido de carbono: " + co_f);
-        $('#Butano_display').text("Butano: " + butano_f);
+        $('#Butano_display').text("Monóxido de carbono: " + co_f);
+        $('#CO_display_1').text("Butano: " + butano_f);
 
         tiempo.push(fecha.toISOString());
         co.push(co_f);
