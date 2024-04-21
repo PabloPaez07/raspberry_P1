@@ -31,8 +31,8 @@
     client.on('message', function (topic, message) 
     {
         var datos_recibidos = JSON.parse(message);
-        var butano_f = parseFloat(datos_recibidos['Butano']).toFixed(2);
-        var co_f = parseFloat(datos_recibidos['CO']).toFixed(2);
+        var butano_f = parseFloat(datos_recibidos['CO']).toFixed(2);
+        var co_f = parseFloat(datos_recibidos['Butano']).toFixed(2);
         var fecha = new Date();
         if(co_f >0.7 || butano_f >0.7)
         {
@@ -40,8 +40,8 @@
           saltarAlarma();
         }
 
-        $('#Butano_display').text("Monóxido de carbono: " + co_f);
-        $('#CO_display_1').text("Butano: " + butano_f);
+        $('#CO_display_1').text("Monóxido de carbono: " + co_f);
+        $('#Butano_display').text("Butano: " + butano_f);
 
         tiempo.push(fecha.toISOString());
         co.push(co_f);
